@@ -2,14 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="application-name" content="Darash">
-<meta name="apple-mobile-web-app-title" content="Darash">
-<meta name="theme-color" content="#030508">
-<meta name="msapplication-navbutton-color" content="#030508">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
--web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>דָּרַשׁ · Darash</title>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600;700&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Noto+Serif+Hebrew:wght@400;700&display=swap" rel="stylesheet">
 <style>
@@ -545,6 +538,19 @@ body::before{content:'';position:fixed;inset:0;
 .cel-msg{font-size:13px;color:var(--text-2);font-style:italic;line-height:1.7;margin-bottom:18px;}
 
 .empty{text-align:center;padding:16px;color:var(--text-3);font-style:italic;font-size:12px;}
+/* ════════════════════════════════
+   WEEKLY RINGS
+════════════════════════════════ */
+.rings-card{background:linear-gradient(135deg,#070b16,#0e0b00);border:1px solid var(--border-gold);border-radius:18px;padding:14px 14px 10px;margin-bottom:13px;overflow:hidden;}
+.rings-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
+.rings-title{font-family:'Cinzel',serif;font-size:11px;color:var(--gold);letter-spacing:1.5px;text-transform:uppercase;}
+.rings-sub{font-family:'Cinzel',serif;font-size:8px;color:var(--gold-dim);letter-spacing:1px;text-transform:uppercase;}
+.rings-wrap{width:100%;aspect-ratio:1/1;max-height:300px;margin:0 auto;}
+.rings-legend{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 14px;margin-top:10px;padding-top:8px;border-top:1px solid var(--border);}
+.rleg-item{display:flex;align-items:center;gap:5px;}
+.rleg-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+.rleg-lbl{font-family:'Cinzel',serif;font-size:8px;color:var(--text-3);letter-spacing:.5px;}
+
 ::-webkit-scrollbar{width:3px;}
 ::-webkit-scrollbar-track{background:transparent;}
 ::-webkit-scrollbar-thumb{background:var(--gold-dim);border-radius:2px;}
@@ -593,6 +599,22 @@ body::before{content:'';position:fixed;inset:0;
             <div class="zk-card-type">Word of the Month</div>
             <div id="zkBannerMo"><div class="zk-empty">Tap to set →</div></div>
           </div>
+        </div>
+      </div>
+
+      <!-- ══ WEEKLY RINGS ══ -->
+      <div class="rings-card">
+        <div class="rings-hdr">
+          <div class="rings-title">⬤ Weekly Tracker</div>
+          <div class="rings-sub">5 rings · 7 days</div>
+        </div>
+        <div class="rings-wrap" id="weekRingsCanvas"></div>
+        <div class="rings-legend">
+          <div class="rleg-item"><span class="rleg-dot" style="background:#c9a84c"></span><span class="rleg-lbl">Back to Basics</span></div>
+          <div class="rleg-item"><span class="rleg-dot" style="background:#8b5cf6"></span><span class="rleg-lbl">Daniel</span></div>
+          <div class="rleg-item"><span class="rleg-dot" style="background:#10b981"></span><span class="rleg-lbl">Ezekiel</span></div>
+          <div class="rleg-item"><span class="rleg-dot" style="background:#38bdf8"></span><span class="rleg-lbl">Study</span></div>
+          <div class="rleg-item"><span class="rleg-dot" style="background:#ff6b6b"></span><span class="rleg-lbl">Zikaron</span></div>
         </div>
       </div>
 
@@ -973,6 +995,9 @@ let S={
   selPlanId:1, selColor:'pc-gold', selMethod:'soap',
   todayDone:false, notes:0, bestStreak:31,
   weekHistory:[false,false,false,false,false,false,false],
+  // Weekly ring tracking — 7 days, 5 trackers per day
+  // trackers: plan1 (gold), plan2 (violet), plan3 (emerald), study (blue), zikaron (crimson)
+  weekRings:[0,1,2,3,4,5,6].map(()=>({plan1:false,plan2:false,plan3:false,study:false,zikaron:false})),
   prayerDone:{}, activePrayer:null,
   subjects:[], amarEntries:[],
   // Zikaron — Word of the Year + Word of the Month
@@ -1002,7 +1027,7 @@ function init(){
 }
 
 function renderAll(){
-  syncHdr();renderWeek();renderPrayer();renderDashGrid();
+  syncHdr();renderWeek();renderWeekRings();renderPrayer();renderDashGrid();
   renderActivePlans();renderStudyPills();
   renderSubjects();renderAmarEntries();
   renderZikaron();renderPathCards();renderHeatmap();
@@ -1050,8 +1075,89 @@ function renderWeek(){
 }
 
 // ═══════════════════════════════════════
-//  PRAYER
+//  WEEKLY RINGS
 // ═══════════════════════════════════════
+function renderWeekRings(){
+  const el=document.getElementById('weekRingsCanvas');
+  if(!el)return;
+  const dow=new Date().getDay();
+  const days=['Su','Mo','Tu','We','Th','Fr','Sa'];
+  const rings=[
+    {key:'plan1',  color:'#c9a84c', label:'B2B'    },
+    {key:'plan2',  color:'#8b5cf6', label:'Daniel'  },
+    {key:'plan3',  color:'#10b981', label:'Ezekiel' },
+    {key:'study',  color:'#38bdf8', label:'Study'   },
+    {key:'zikaron',color:'#ff6b6b', label:'Zikaron' },
+  ];
+  const S2=320, cx=S2/2, cy=S2/2;
+  const baseR=cx-22, ringGap=14, segGap=4;
+  const toRad=d=>d*Math.PI/180;
+  let svg='';
+
+  // Outer day labels
+  const lblR=baseR+17;
+  days.forEach((day,di)=>{
+    const isToday=di===dow;
+    const midDeg=-90+(di*(360/7))+(360/7-segGap)/2;
+    const lx=cx+lblR*Math.cos(toRad(midDeg));
+    const ly=cy+lblR*Math.sin(toRad(midDeg));
+    svg+=`<text x="${lx.toFixed(1)}" y="${ly.toFixed(1)}" font-family="Cinzel,serif"
+      font-size="${isToday?9.5:8}" fill="${isToday?'#f0cc7a':'rgba(255,255,255,0.22)'}"
+      font-weight="${isToday?700:400}" text-anchor="middle" dominant-baseline="middle">${day}</text>`;
+  });
+
+  // 5 concentric rings
+  rings.forEach((ring,ri)=>{
+    const r=baseR-(ri*ringGap), sw=10;
+    days.forEach((day,di)=>{
+      const isDone=S.weekRings[di][ring.key];
+      const isToday=di===dow;
+      const segDeg=360/7-segGap;
+      const startDeg=-90+(di*(360/7));
+      const endDeg=startDeg+segDeg;
+      const x1=cx+r*Math.cos(toRad(startDeg)), y1=cy+r*Math.sin(toRad(startDeg));
+      const x2=cx+r*Math.cos(toRad(endDeg)),   y2=cy+r*Math.sin(toRad(endDeg));
+      // Empty track
+      svg+=`<path d="M ${x1.toFixed(2)} ${y1.toFixed(2)} A ${r} ${r} 0 0 1 ${x2.toFixed(2)} ${y2.toFixed(2)}"
+        fill="none" stroke="${isDone?ring.color:'rgba(255,255,255,0.06)'}"
+        stroke-width="${sw}" stroke-linecap="round"/>`;
+      // Glow on done
+      if(isDone) svg+=`<path d="M ${x1.toFixed(2)} ${y1.toFixed(2)} A ${r} ${r} 0 0 1 ${x2.toFixed(2)} ${y2.toFixed(2)}"
+        fill="none" stroke="${ring.color}" stroke-width="${sw+5}" stroke-linecap="round" opacity="0.15"/>`;
+      // Today dot
+      if(isToday){
+        const mid=startDeg+segDeg/2;
+        const mx=cx+r*Math.cos(toRad(mid)), my=cy+r*Math.sin(toRad(mid));
+        svg+=`<circle cx="${mx.toFixed(2)}" cy="${my.toFixed(2)}" r="5"
+          fill="${isDone?ring.color:'rgba(255,255,255,0.2)'}" stroke="rgba(0,0,0,0.5)" stroke-width="1.5"/>`;
+        if(isDone) svg+=`<circle cx="${mx.toFixed(2)}" cy="${my.toFixed(2)}" r="8"
+          fill="none" stroke="${ring.color}" stroke-width="1" opacity="0.35"/>`;
+      }
+    });
+    // Ring label at 9-o'clock
+    svg+=`<text x="${(cx-(r+sw/2+6)).toFixed(1)}" y="${cy}"
+      font-family="Cinzel,serif" font-size="6.5" fill="${ring.color}" opacity="0.65"
+      text-anchor="end" dominant-baseline="middle">${ring.label}</text>`;
+  });
+
+  // Centre stats
+  const done=S.weekRings.reduce((a,d)=>a+Object.values(d).filter(Boolean).length,0);
+  svg+=`
+    <text x="${cx}" y="${cy-14}" font-family="Cinzel Decorative,serif" font-size="30"
+      fill="#f0cc7a" text-anchor="middle" dominant-baseline="middle"
+      filter="url(#rg)">${done}</text>
+    <text x="${cx}" y="${cy+13}" font-family="Cinzel,serif" font-size="7"
+      fill="rgba(201,168,76,0.4)" text-anchor="middle" letter-spacing="2">OF 35 · WEEK</text>`;
+
+  const defs=`<defs><filter id="rg" x="-60%" y="-60%" width="220%" height="220%">
+    <feGaussianBlur stdDeviation="4" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter></defs>`;
+
+  el.innerHTML=`<svg viewBox="0 0 ${S2} ${S2}" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">${defs}${svg}</svg>`;
+}
+
+
 function renderPrayer(){
   document.getElementById('prayerGrid').innerHTML=PRAYER.map(p=>{
     const done=!!S.prayerDone[p.id];
@@ -1234,7 +1340,8 @@ function saveZkYr(){
   if(!ref&&!word){document.getElementById('zkYrRefInp').focus();return;}
   if(S.zkYr.word&&S.zkYr.year&&S.zkYr.year!==year) S.zkYrHistory.unshift({...S.zkYr});
   S.zkYr={ref,verse,word,meaning,year};
-  renderZikaron();
+  S.weekRings[new Date().getDay()].zikaron=true;
+  renderZikaron();renderWeekRings();
   setTimeout(()=>document.getElementById('zkYrDisp').scrollIntoView({behavior:'smooth',block:'start'}),80);
 }
 
@@ -1248,7 +1355,8 @@ function saveZkMo(){
   if(!ref&&!word){document.getElementById('zkMoRefInp').focus();return;}
   if(S.zkMo.word&&S.zkMo.month&&S.zkMo.month!==month) S.zkMoHistory.unshift({...S.zkMo});
   S.zkMo={ref,verse,word,meaning,month};
-  renderZikaron();
+  S.weekRings[new Date().getDay()].zikaron=true;
+  renderZikaron();renderWeekRings();
   setTimeout(()=>document.getElementById('zkMoDisp').scrollIntoView({behavior:'smooth',block:'start'}),80);
 }
 
@@ -1336,7 +1444,9 @@ function markComplete(){
   S.todayDone=true;
   const hasTa=[...document.querySelectorAll('.sp-ta')].some(t=>t.value.trim());
   if(hasTa)S.notes++;
-  const dow=new Date().getDay();S.weekHistory[dow]=true;
+  const dow=new Date().getDay();
+  S.weekHistory[dow]=true;
+  S.weekRings[dow].study=true;
   document.getElementById('celNum').textContent=streakN()+1;
   openMo('moCel');
   const btn=document.getElementById('completeBtn');
@@ -1353,7 +1463,14 @@ function toggleDay(pid,idx){
   else{p.doneDays.push(idx);p.doneDays.sort((a,b)=>a-b);}
   p.completed=p.doneDays.length>=p.days;
   S.bestStreak=Math.max(S.bestStreak,streakN());
-  renderPathCards();renderDashGrid();renderActivePlans();renderStudyPills();renderMyPlans();syncHdr();
+  // Mark today's ring for whichever plan was ticked
+  const dow=new Date().getDay();
+  const key={1:'plan1',2:'plan2',3:'plan3'}[pid];
+  if(key){
+    // ring is active if plan has ANY done days (including today's tick)
+    S.weekRings[dow][key]=p.doneDays.length>0;
+  }
+  renderPathCards();renderDashGrid();renderActivePlans();renderStudyPills();renderMyPlans();syncHdr();renderWeekRings();
 }
 
 function renderPathCards(){
@@ -1452,5 +1569,5 @@ document.querySelectorAll('.mo').forEach(m=>m.addEventListener('click',e=>{if(e.
 init();
 </script>
 </body>
-
 </html>
+
