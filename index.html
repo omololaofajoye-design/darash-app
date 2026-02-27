@@ -2,33 +2,69 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>דָּרַשׁ · Darash</title>
+
+<!-- PWA — iPhone -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Darash">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='38' fill='%23030508'/%3E%3Crect width='180' height='180' rx='38' fill='url(%23g)'/%3E%3Cdefs%3E%3CradialGradient id='g' cx='50%25' cy='30%25'%3E%3Cstop offset='0' stop-color='%23c9a84c' stop-opacity='.18'/%3E%3Cstop offset='1' stop-color='%23030508' stop-opacity='0'/%3E%3C/radialGradient%3E%3C/defs%3E%3Ctext x='90' y='115' font-family='serif' font-size='72' fill='%23f0cc7a' text-anchor='middle'%3E%D7%93%3C/text%3E%3C/svg%3E">
+
+<!-- PWA — Android / Chrome -->
+<meta name="theme-color" content="#030508">
+<meta name="mobile-web-app-capable" content="yes">
+
+<!-- Inline manifest for Android PWA install -->
+<script>
+const _manifest={
+  name:'דָּרַשׁ · Darash',short_name:'Darash',
+  description:'Seek the Word — daily Bible study companion',
+  start_url:'./',display:'standalone',
+  background_color:'#030508',theme_color:'#030508',
+  orientation:'portrait',
+  icons:[{src:"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='110' fill='%23030508'/%3E%3Ctext x='256' y='340' font-family='serif' font-size='260' fill='%23f0cc7a' text-anchor='middle'%3E%D7%93%3C/text%3E%3C/svg%3E",sizes:'512x512',type:'image/svg+xml',purpose:'any maskable'}]
+};
+const _blob=new Blob([JSON.stringify(_manifest)],{type:'application/manifest+json'});
+const _murl=URL.createObjectURL(_blob);
+const _ml=document.createElement('link');
+_ml.rel='manifest';_ml.href=_murl;
+document.currentScript.after(_ml);
+</script>
+
 <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600;700&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Noto+Serif+Hebrew:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --void:#030508; --deep:#07090f; --card:#0c1120; --card2:#101828;
-  --border:#18243a; --border-gold:rgba(201,168,76,0.22);
-  --gold:#c9a84c; --gold-bright:#f0cc7a; --gold-dim:#6b5520;
-  --c-soap-s:#f0cc7a; --c-soap-o:#38bdf8; --c-soap-a:#a78bfa; --c-soap-p:#86efac;
-  --c-star-s:#f97316; --c-star-t:#e879f9; --c-star-a:#34d399; --c-star-r:#fb7185;
-  --c-oia-o:#60a5fa; --c-oia-i:#f472b6; --c-oia-a:#4ade80;
-  --c-reap-r:#fbbf24; --c-reap-e:#c084fc; --c-reap-a:#2dd4bf; --c-reap-p:#f87171;
-  --c-5r-r1:#fde68a; --c-5r-r2:#93c5fd; --c-5r-r3:#a5b4fc; --c-5r-r4:#6ee7b7; --c-5r-r5:#fda4af;
-  --pr-9a:#fde68a; --pr-12p:#86efac; --pr-3p:#93c5fd; --pr-6p:#f9a8d4; --pr-9pm:#c4b5fd;
-  --c-word:#fde68a; --c-song:#f9a8d4; --c-sermon:#93c5fd;
-  --c-amar:#e879f9;
-  /* Word for the Year — crimson/fire */
-  --c-wfy:#ff6b6b; --c-wfy-bright:#ff9a9a; --c-wfy-dim:rgba(255,107,107,0.2);
-  /* Word for the Month — teal/cyan */
-  --c-wfm:#2dd4bf; --c-wfm-bright:#5eead4; --c-wfm-dim:rgba(45,212,191,0.2);
-  --glow-teal:0 0 32px rgba(45,212,191,0.18);
-  --emerald:#10b981; --sapphire:#3b82f6; --violet:#8b5cf6;
-  --rose:#f43f5e; --teal:#14b8a6; --orange:#f97316;
-  --text:#e8dcc8; --text-2:#9aa0b8; --text-3:#3d4f6a;
-  --glow:0 0 24px rgba(201,168,76,0.1);
-  --glow-strong:0 0 40px rgba(201,168,76,0.2);
-  --glow-red:0 0 32px rgba(255,107,107,0.18);
+  --void:#020406; --deep:#06080e; --card:#0a0f1e; --card2:#0e1524;
+  --border:#1a2540; --border-gold:rgba(230,180,50,0.28);
+  --gold:#e6b432; --gold-bright:#ffd84d; --gold-dim:#7a5f18;
+
+  /* Study method step colors — sharper */
+  --c-soap-s:#ffd84d; --c-soap-o:#00cfff; --c-soap-a:#c084fc; --c-soap-p:#00f5a0;
+  --c-star-s:#ff7a00; --c-star-t:#f700ff; --c-star-a:#00e87a; --c-star-r:#ff2d55;
+  --c-oia-o:#3b9eff; --c-oia-i:#ff4eb8; --c-oia-a:#00e676;
+  --c-reap-r:#ffcc00; --c-reap-e:#bf5fff; --c-reap-a:#00d4c8; --c-reap-p:#ff5252;
+  --c-5r-r1:#ffe566; --c-5r-r2:#6ec6ff; --c-5r-r3:#9b8fff; --c-5r-r4:#00e5a0; --c-5r-r5:#ff6b8a;
+
+  /* Prayer bell colors */
+  --pr-9a:#ffe566; --pr-12p:#00f5a0; --pr-3p:#6ec6ff; --pr-6p:#ff6b9d; --pr-9pm:#c084fc;
+
+  /* Daily trio */
+  --c-word:#ffe566; --c-song:#ff6b9d; --c-sermon:#6ec6ff;
+  --c-amar:#f000ff;
+
+  /* Zikaron — Year: crimson fire, Month: electric teal */
+  --c-wfy:#ff3a3a; --c-wfy-bright:#ff7070; --c-wfy-dim:rgba(255,58,58,0.2);
+  --c-wfm:#00e5d4; --c-wfm-bright:#4dfff0; --c-wfm-dim:rgba(0,229,212,0.2);
+  --glow-teal:0 0 32px rgba(0,229,212,0.22);
+
+  --emerald:#00e676; --sapphire:#2979ff; --violet:#aa00ff;
+  --rose:#ff1744; --teal:#00bcd4; --orange:#ff6d00;
+
+  --text:#f0e6d0; --text-2:#8a96b8; --text-3:#344060;
+  --glow:0 0 28px rgba(230,180,50,0.14);
+  --glow-strong:0 0 48px rgba(230,180,50,0.26);
+  --glow-red:0 0 32px rgba(255,58,58,0.22);
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html,body{height:100%;background:var(--void);color:var(--text);font-family:'Lora',serif;overflow:hidden;}
@@ -290,8 +326,8 @@ body::before{content:'';position:fixed;inset:0;
 .plan-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:12px 14px;margin-bottom:8px;cursor:pointer;transition:all .25s;position:relative;overflow:hidden;}
 .plan-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;border-radius:3px 0 0 3px;}
 .pc-gold::before{background:var(--gold);}
-.pc-violet::before{background:#8b5cf6;}
-.pc-emerald::before{background:#10b981;}
+.pc-violet::before{background:#aa00ff;}
+.pc-emerald::before{background:#00e676;}
 .pc-sapphire::before{background:#3b82f6;}
 .pc-rose::before{background:#f43f5e;}
 .pc-teal::before{background:#14b8a6;}
@@ -302,9 +338,9 @@ body::before{content:'';position:fixed;inset:0;
 .pc-day{font-family:'Cinzel',serif;font-size:10px;color:var(--gold);background:rgba(201,168,76,0.1);border:1px solid var(--border-gold);border-radius:7px;padding:2px 9px;white-space:nowrap;}
 .pc-bar{height:2px;background:var(--deep);border-radius:2px;overflow:hidden;margin-bottom:4px;}
 .pc-fill{height:100%;border-radius:2px;transition:width .6s;}
-.pc-gold .pc-fill{background:linear-gradient(90deg,var(--gold-dim),var(--gold-bright));}
-.pc-violet .pc-fill{background:linear-gradient(90deg,#4c1d95,#c4b5fd);}
-.pc-emerald .pc-fill{background:linear-gradient(90deg,#064e3b,#6ee7b7);}
+.pc-gold .pc-fill{background:linear-gradient(90deg,#7a5f18,var(--gold-bright));}
+.pc-violet .pc-fill{background:linear-gradient(90deg,#5500aa,#cc44ff);}
+.pc-emerald .pc-fill{background:linear-gradient(90deg,#007a40,#00ff88);}
 .pc-sapphire .pc-fill{background:linear-gradient(90deg,#1e3a8a,#93c5fd);}
 .pc-rose .pc-fill{background:linear-gradient(90deg,#881337,#fda4af);}
 .pc-teal .pc-fill{background:linear-gradient(90deg,#134e4a,#5eead4);}
@@ -541,15 +577,28 @@ body::before{content:'';position:fixed;inset:0;
 /* ════════════════════════════════
    WEEKLY RINGS
 ════════════════════════════════ */
-.rings-card{background:linear-gradient(135deg,#070b16,#0e0b00);border:1px solid var(--border-gold);border-radius:18px;padding:14px 14px 10px;margin-bottom:13px;overflow:hidden;}
+.rings-card{background:linear-gradient(135deg,#070b16,#0e0b00);border:1px solid var(--border-gold);border-radius:18px;padding:14px 14px 10px;margin-bottom:13px;overflow:hidden;max-width:400px;margin-left:auto;margin-right:auto;width:100%;box-sizing:border-box;}
 .rings-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
 .rings-title{font-family:'Cinzel',serif;font-size:11px;color:var(--gold);letter-spacing:1.5px;text-transform:uppercase;}
 .rings-sub{font-family:'Cinzel',serif;font-size:8px;color:var(--gold-dim);letter-spacing:1px;text-transform:uppercase;}
-.rings-wrap{width:100%;aspect-ratio:1/1;max-height:300px;margin:0 auto;}
-.rings-legend{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 14px;margin-top:10px;padding-top:8px;border-top:1px solid var(--border);}
-.rleg-item{display:flex;align-items:center;gap:5px;}
-.rleg-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
-.rleg-lbl{font-family:'Cinzel',serif;font-size:8px;color:var(--text-3);letter-spacing:.5px;}
+.rings-wrap{width:100%;position:relative;padding-bottom:100%;max-height:320px;overflow:hidden;}
+.rings-wrap svg{position:absolute;top:0;left:0;width:100%;height:100%;}
+.rings-legend{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 18px;margin-top:10px;padding-top:8px;border-top:1px solid var(--border);}
+.rleg-item{display:flex;align-items:center;}
+.rleg-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;box-shadow:0 0 6px currentColor;}
+
+/* ════════════════════════════════
+   INSTALL BANNER
+════════════════════════════════ */
+.install-banner{position:fixed;bottom:80px;left:12px;right:12px;background:linear-gradient(135deg,#0e0b00,#1a1200);border:1px solid var(--gold-dim);border-radius:16px;padding:13px 15px;display:flex;align-items:center;gap:11px;z-index:200;box-shadow:0 8px 32px rgba(0,0,0,0.6),var(--glow);animation:slideUp .4s ease;}
+@keyframes slideUp{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
+.ib-icon{font-size:26px;flex-shrink:0;}
+.ib-text{flex:1;}
+.ib-title{font-family:'Cinzel',serif;font-size:11px;color:var(--gold);letter-spacing:1px;margin-bottom:2px;}
+.ib-sub{font-size:10px;color:var(--text-3);}
+.ib-btn{padding:7px 14px;background:linear-gradient(135deg,#2e1e00,#1a1200);border:1px solid var(--gold);border-radius:9px;color:var(--gold-bright);font-family:'Cinzel',serif;font-size:9px;letter-spacing:1px;cursor:pointer;outline:none;white-space:nowrap;transition:all .2s;}
+.ib-btn:hover{background:linear-gradient(135deg,#3e2a00,#2a1800);box-shadow:var(--glow);}
+.ib-close{width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,0.05);border:1px solid var(--border);color:var(--text-3);font-size:14px;cursor:pointer;outline:none;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 
 ::-webkit-scrollbar{width:3px;}
 ::-webkit-scrollbar-track{background:transparent;}
@@ -610,11 +659,11 @@ body::before{content:'';position:fixed;inset:0;
         </div>
         <div class="rings-wrap" id="weekRingsCanvas"></div>
         <div class="rings-legend">
-          <div class="rleg-item"><span class="rleg-dot" style="background:#c9a84c"></span><span class="rleg-lbl">Back to Basics</span></div>
-          <div class="rleg-item"><span class="rleg-dot" style="background:#8b5cf6"></span><span class="rleg-lbl">Daniel</span></div>
-          <div class="rleg-item"><span class="rleg-dot" style="background:#10b981"></span><span class="rleg-lbl">Ezekiel</span></div>
-          <div class="rleg-item"><span class="rleg-dot" style="background:#38bdf8"></span><span class="rleg-lbl">Study</span></div>
-          <div class="rleg-item"><span class="rleg-dot" style="background:#ff6b6b"></span><span class="rleg-lbl">Zikaron</span></div>
+          <div class="rleg-item"><span class="rleg-dot" style="background:#e6b432"></span></div>
+          <div class="rleg-item"><span class="rleg-dot" style="background:#aa00ff"></span></div>
+          <div class="rleg-item"><span class="rleg-dot" style="background:#00e676"></span></div>
+          <div class="rleg-item"><span class="rleg-dot" style="background:#00cfff"></span></div>
+          <div class="rleg-item"><span class="rleg-dot" style="background:#ff3a3a"></span></div>
         </div>
       </div>
 
@@ -963,9 +1012,9 @@ body::before{content:'';position:fixed;inset:0;
 //  CONSTANTS
 // ═══════════════════════════════════════
 const COLORS=[
-  {cls:'pc-gold',   hex:'#c9a84c',dc:'dc-gold'},
-  {cls:'pc-violet', hex:'#8b5cf6',dc:'dc-violet'},
-  {cls:'pc-emerald',hex:'#10b981',dc:'dc-emerald'},
+  {cls:'pc-gold',   hex:'#e6b432',dc:'dc-gold'},
+  {cls:'pc-violet', hex:'#aa00ff',dc:'dc-violet'},
+  {cls:'pc-emerald',hex:'#00e676',dc:'dc-emerald'},
   {cls:'pc-sapphire',hex:'#3b82f6',dc:'dc-sapphire'},
   {cls:'pc-rose',   hex:'#f43f5e',dc:'dc-rose'},
   {cls:'pc-teal',   hex:'#14b8a6',dc:'dc-teal'},
@@ -1083,11 +1132,11 @@ function renderWeekRings(){
   const dow=new Date().getDay();
   const days=['Su','Mo','Tu','We','Th','Fr','Sa'];
   const rings=[
-    {key:'plan1',  color:'#c9a84c', label:'B2B'    },
-    {key:'plan2',  color:'#8b5cf6', label:'Daniel'  },
-    {key:'plan3',  color:'#10b981', label:'Ezekiel' },
-    {key:'study',  color:'#38bdf8', label:'Study'   },
-    {key:'zikaron',color:'#ff6b6b', label:'Zikaron' },
+    {key:'plan1',  color:'#e6b432' },
+    {key:'plan2',  color:'#aa00ff' },
+    {key:'plan3',  color:'#00e676' },
+    {key:'study',  color:'#00cfff' },
+    {key:'zikaron',color:'#ff3a3a' },
   ];
   const S2=320, cx=S2/2, cy=S2/2;
   const baseR=cx-22, ringGap=14, segGap=4;
@@ -1134,10 +1183,7 @@ function renderWeekRings(){
           fill="none" stroke="${ring.color}" stroke-width="1" opacity="0.35"/>`;
       }
     });
-    // Ring label at 9-o'clock
-    svg+=`<text x="${(cx-(r+sw/2+6)).toFixed(1)}" y="${cy}"
-      font-family="Cinzel,serif" font-size="6.5" fill="${ring.color}" opacity="0.65"
-      text-anchor="end" dominant-baseline="middle">${ring.label}</text>`;
+    // (no text label inside rings — color is the identifier)
   });
 
   // Centre stats
@@ -1154,7 +1200,7 @@ function renderWeekRings(){
     <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
   </filter></defs>`;
 
-  el.innerHTML=`<svg viewBox="0 0 ${S2} ${S2}" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">${defs}${svg}</svg>`;
+  el.innerHTML=`<svg viewBox="0 0 ${S2} ${S2}" xmlns="http://www.w3.org/2000/svg">${defs}${svg}</svg>`;
 }
 
 
@@ -1566,7 +1612,170 @@ function openAddModal(){renderColorRow();openMo('moAdd');}
 function closeMo(){document.querySelectorAll('.mo').forEach(m=>m.classList.remove('open'));}
 document.querySelectorAll('.mo').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)closeMo();}));
 
+// ═══════════════════════════════════════
+//  LOCALSTORAGE — Save & Load
+// ═══════════════════════════════════════
+const STORE_KEY='darash_v1';
+
+function saveState(){
+  try{
+    // Don't save transient UI state
+    const save={
+      todayDone:S.todayDone, notes:S.notes, bestStreak:S.bestStreak,
+      weekHistory:S.weekHistory, weekRings:S.weekRings,
+      prayerDone:S.prayerDone, subjects:S.subjects, amarEntries:S.amarEntries,
+      zkYr:S.zkYr, zkYrHistory:S.zkYrHistory,
+      zkMo:S.zkMo, zkMoHistory:S.zkMoHistory,
+      plans:S.plans,
+      _savedDate:new Date().toDateString()
+    };
+    localStorage.setItem(STORE_KEY,JSON.stringify(save));
+  }catch(e){console.warn('Save failed',e);}
+}
+
+function loadState(){
+  try{
+    const raw=localStorage.getItem(STORE_KEY);
+    if(!raw)return;
+    const saved=JSON.parse(raw);
+
+    // Reset weekly rings if it's a new week (Monday resets)
+    const today=new Date().toDateString();
+    const savedDate=saved._savedDate||today;
+    const daysSince=Math.floor((new Date(today)-new Date(savedDate))/(1000*60*60*24));
+    // If saved date is >6 days ago, clear weekHistory and weekRings
+    if(daysSince>6){
+      saved.weekHistory=[false,false,false,false,false,false,false];
+      saved.weekRings=[0,1,2,3,4,5,6].map(()=>({plan1:false,plan2:false,plan3:false,study:false,zikaron:false}));
+      saved.todayDone=false;
+    }
+    // Reset todayDone if it's a new day
+    if(saved._savedDate && saved._savedDate!==today){
+      saved.todayDone=false;
+    }
+
+    // Merge into S (keep defaults for any missing keys)
+    Object.assign(S,saved);
+
+    // Ensure weekRings has correct shape
+    if(!Array.isArray(S.weekRings)||S.weekRings.length!==7){
+      S.weekRings=[0,1,2,3,4,5,6].map(()=>({plan1:false,plan2:false,plan3:false,study:false,zikaron:false}));
+    }
+  }catch(e){console.warn('Load failed',e);}
+}
+
+// Patch every state-mutating function to auto-save
+const _origMarkComplete=markComplete;
+markComplete=function(){_origMarkComplete();saveState();};
+const _origToggleDay=toggleDay;
+toggleDay=function(pid,idx){_origToggleDay(pid,idx);saveState();};
+const _origSaveAmar=saveAmar;
+saveAmar=function(){_origSaveAmar();saveState();};
+const _origSaveZkYr=saveZkYr;
+saveZkYr=function(){_origSaveZkYr();saveState();};
+const _origSaveZkMo=saveZkMo;
+saveZkMo=function(){_origSaveZkMo();saveState();};
+const _origSaveNewPlan=saveNewPlan;
+saveNewPlan=function(){_origSaveNewPlan();saveState();};
+const _origConfirmPrayer=confirmPrayer;
+confirmPrayer=function(){_origConfirmPrayer();saveState();};
+
+// ═══════════════════════════════════════
+//  SERVICE WORKER — Offline caching
+// ═══════════════════════════════════════
+if('serviceWorker' in navigator){
+  const swCode=`
+const CACHE='darash-v1';
+const FONTS=[
+  'https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600;700&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Noto+Serif+Hebrew:wght@400;700&display=swap'
+];
+self.addEventListener('install',e=>{
+  e.waitUntil(caches.open(CACHE).then(c=>c.addAll(FONTS).catch(()=>{})));
+  self.skipWaiting();
+});
+self.addEventListener('activate',e=>{
+  e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))));
+  self.clients.claim();
+});
+self.addEventListener('fetch',e=>{
+  e.respondWith(
+    caches.match(e.request).then(cached=>{
+      if(cached)return cached;
+      return fetch(e.request).then(res=>{
+        if(res&&res.status===200&&res.type!=='opaque'){
+          const clone=res.clone();
+          caches.open(CACHE).then(c=>c.put(e.request,clone));
+        }
+        return res;
+      }).catch(()=>cached||new Response('',{status:503}));
+    })
+  );
+});`;
+  const swBlob=new Blob([swCode],{type:'application/javascript'});
+  const swUrl=URL.createObjectURL(swBlob);
+  navigator.serviceWorker.register(swUrl,{scope:'./'})
+    .then(()=>console.log('Darash SW registered'))
+    .catch(e=>console.log('SW skipped:',e));
+}
+
+// ═══════════════════════════════════════
+//  INSTALL PROMPT — Android
+// ═══════════════════════════════════════
+let _deferredPrompt=null;
+window.addEventListener('beforeinstallprompt',e=>{
+  e.preventDefault();
+  _deferredPrompt=e;
+  showInstallBanner('android');
+});
+
+// iPhone install guidance (shown once)
+function checkiOSInstall(){
+  const isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent);
+  const isStandalone=window.matchMedia('(display-mode: standalone)').matches||window.navigator.standalone;
+  const shown=localStorage.getItem('darash_ios_banner');
+  if(isIOS&&!isStandalone&&!shown) showInstallBanner('ios');
+}
+
+function showInstallBanner(type){
+  if(document.getElementById('installBanner'))return;
+  const b=document.createElement('div');
+  b.id='installBanner';b.className='install-banner';
+  if(type==='android'){
+    b.innerHTML=`<div class="ib-icon">📲</div>
+      <div class="ib-text"><div class="ib-title">Install Darash</div>
+      <div class="ib-sub">Add to home screen for offline use</div></div>
+      <button class="ib-btn" onclick="triggerInstall()">Install</button>
+      <button class="ib-close" onclick="dismissBanner()">×</button>`;
+  } else {
+    b.innerHTML=`<div class="ib-icon">📲</div>
+      <div class="ib-text"><div class="ib-title">Install on iPhone</div>
+      <div class="ib-sub">Tap Share → Add to Home Screen</div></div>
+      <button class="ib-close" onclick="dismissBanner()">×</button>`;
+    localStorage.setItem('darash_ios_banner','1');
+  }
+  document.body.appendChild(b);
+}
+
+function triggerInstall(){
+  if(_deferredPrompt){
+    _deferredPrompt.prompt();
+    _deferredPrompt.userChoice.then(()=>{_deferredPrompt=null;dismissBanner();});
+  }
+}
+
+function dismissBanner(){
+  const b=document.getElementById('installBanner');
+  if(b)b.remove();
+}
+
+// ═══════════════════════════════════════
+//  BOOT
+// ═══════════════════════════════════════
+loadState();
 init();
+// Re-render rings after first paint so SVG container has real dimensions
+requestAnimationFrame(()=>requestAnimationFrame(renderWeekRings));
+checkiOSInstall();
 </script>
 </body>
 </html>
