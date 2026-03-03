@@ -14,76 +14,60 @@
 <!-- PWA — Android / Chrome -->
 <meta name="theme-color" content="#030508">
 <meta name="mobile-web-app-capable" content="yes">
-
-<!-- Inline manifest for Android PWA install -->
-<script>
-const _manifest={
-  name:'דָּרַשׁ · Darash',short_name:'Darash',
-  description:'Seek the Word — daily Bible study companion',
-  start_url:'./',display:'standalone',
-  background_color:'#030508',theme_color:'#030508',
-  orientation:'portrait',
-  icons:[{src:"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='110' fill='%23030508'/%3E%3Ctext x='256' y='340' font-family='serif' font-size='260' fill='%23f0cc7a' text-anchor='middle'%3E%D7%93%3C/text%3E%3C/svg%3E",sizes:'512x512',type:'image/svg+xml',purpose:'any maskable'}]
-};
-const _blob=new Blob([JSON.stringify(_manifest)],{type:'application/manifest+json'});
-const _murl=URL.createObjectURL(_blob);
-const _ml=document.createElement('link');
-_ml.rel='manifest';_ml.href=_murl;
-document.currentScript.after(_ml);
-</script>
+<link rel="manifest" href="data:application/manifest+json,{%22name%22:%22%D7%93%D6%B8%D6%BC%D7%A8%D7%A9%D7%81%20%C2%B7%20Darash%22,%22short_name%22:%22Darash%22,%22description%22:%22Seek%20the%20Word%22,%22start_url%22:%22./%22,%22display%22:%22standalone%22,%22background_color%22:%22%23030508%22,%22theme_color%22:%22%23030508%22,%22orientation%22:%22portrait%22}">
 
 <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600;700&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Noto+Serif+Hebrew:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --void:#020406; --deep:#06080e; --card:#0a0f1e; --card2:#0e1524;
-  --border:#1a2540; --border-gold:rgba(230,180,50,0.28);
-  --gold:#e6b432; --gold-bright:#ffd84d; --gold-dim:#7a5f18;
+  --void:#010204; --deep:#04060d; --card:#080d1c; --card2:#0c1120;
+  --border:#3a5090; --border-gold:rgba(255,218,0,0.75);
+  --gold:#ffc400; --gold-bright:#ffe600; --gold-dim:#c09000;
 
-  /* Study method step colors — sharper */
-  --c-soap-s:#ffd84d; --c-soap-o:#00cfff; --c-soap-a:#c084fc; --c-soap-p:#00f5a0;
-  --c-star-s:#ff7a00; --c-star-t:#f700ff; --c-star-a:#00e87a; --c-star-r:#ff2d55;
-  --c-oia-o:#3b9eff; --c-oia-i:#ff4eb8; --c-oia-a:#00e676;
-  --c-reap-r:#ffcc00; --c-reap-e:#bf5fff; --c-reap-a:#00d4c8; --c-reap-p:#ff5252;
-  --c-5r-r1:#ffe566; --c-5r-r2:#6ec6ff; --c-5r-r3:#9b8fff; --c-5r-r4:#00e5a0; --c-5r-r5:#ff6b8a;
+  /* Study method step colors — PURE MAX */
+  --c-soap-s:#ffe000; --c-soap-o:#00f0ff; --c-soap-a:#e000ff; --c-soap-p:#00ff99;
+  --c-star-s:#ff6600; --c-star-t:#ff00ff; --c-star-a:#00ff6e; --c-star-r:#ff0044;
+  --c-oia-o:#0099ff; --c-oia-i:#ff0099; --c-oia-a:#00ff55;
+  --c-reap-r:#ffdd00; --c-reap-e:#cc00ff; --c-reap-a:#00ffee; --c-reap-p:#ff2200;
+  --c-5r-r1:#ffee00; --c-5r-r2:#00aaff; --c-5r-r3:#9955ff; --c-5r-r4:#00ffaa; --c-5r-r5:#ff3377;
 
   /* Prayer bell colors */
-  --pr-9a:#ffe566; --pr-12p:#00f5a0; --pr-3p:#6ec6ff; --pr-6p:#ff6b9d; --pr-9pm:#c084fc;
+  --pr-9a:#ffe000; --pr-12p:#00ff99; --pr-3p:#00ddff; --pr-6p:#ff0077; --pr-9pm:#cc00ff;
 
   /* Daily trio */
-  --c-word:#ffe566; --c-song:#ff6b9d; --c-sermon:#6ec6ff;
-  --c-amar:#f000ff;
+  --c-word:#ffe000; --c-song:#ff0077; --c-sermon:#00ccff;
+  --c-amar:#ff00ff;
 
-  /* Zikaron — Year: crimson fire, Month: electric teal */
-  --c-wfy:#ff3a3a; --c-wfy-bright:#ff7070; --c-wfy-dim:rgba(255,58,58,0.2);
-  --c-wfm:#00e5d4; --c-wfm-bright:#4dfff0; --c-wfm-dim:rgba(0,229,212,0.2);
-  --glow-teal:0 0 32px rgba(0,229,212,0.22);
+  /* Zikaron */
+  --c-wfy:#ff2200; --c-wfy-bright:#ff7755; --c-wfy-dim:rgba(255,34,0,0.45);
+  --c-wfm:#00ffee; --c-wfm-bright:#99fff8; --c-wfm-dim:rgba(0,255,238,0.45);
+  --glow-teal:0 0 60px rgba(0,255,238,0.7);
 
-  --emerald:#00e676; --sapphire:#2979ff; --violet:#aa00ff;
-  --rose:#ff1744; --teal:#00bcd4; --orange:#ff6d00;
+  --emerald:#00ff66; --sapphire:#0055ff; --violet:#cc00ff;
+  --rose:#ff0033; --teal:#00eeff; --orange:#ff6600;
 
-  --text:#f0e6d0; --text-2:#8a96b8; --text-3:#344060;
-  --glow:0 0 28px rgba(230,180,50,0.14);
-  --glow-strong:0 0 48px rgba(230,180,50,0.26);
-  --glow-red:0 0 32px rgba(255,58,58,0.22);
+  --text:#fffdf0; --text-2:#b0c8ff; --text-3:#4a62a0;
+  --glow:0 0 50px rgba(255,196,0,0.5);
+  --glow-strong:0 0 80px rgba(255,196,0,0.75);
+  --glow-red:0 0 60px rgba(255,34,0,0.65);
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 html,body{height:100%;background:var(--void);color:var(--text);font-family:'Lora',serif;overflow:hidden;}
 body::before{content:'';position:fixed;inset:0;
-  background:radial-gradient(ellipse 70% 50% at 10% 0%,rgba(59,130,246,0.03) 0%,transparent 60%),
-    radial-gradient(ellipse 60% 40% at 90% 100%,rgba(201,168,76,0.04) 0%,transparent 60%),
-    radial-gradient(ellipse 50% 30% at 50% 50%,rgba(139,92,246,0.02) 0%,transparent 70%);
+  background:radial-gradient(ellipse 70% 50% at 10% 0%,rgba(0,80,255,0.22) 0%,transparent 60%),
+    radial-gradient(ellipse 60% 40% at 90% 100%,rgba(255,196,0,0.38) 0%,transparent 60%),
+    radial-gradient(ellipse 50% 30% at 50% 50%,rgba(180,0,255,0.16) 0%,transparent 70%);
   pointer-events:none;z-index:0;}
 
 #app{position:relative;z-index:1;max-width:430px;margin:0 auto;height:100vh;display:flex;flex-direction:column;overflow:hidden;}
 
 /* ── HEADER ── */
-.hdr{padding:11px 16px 9px;display:flex;align-items:center;justify-content:space-between;background:rgba(3,5,8,0.98);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-gold);flex-shrink:0;z-index:50;}
-.logo-heb{font-family:'Noto Serif Hebrew',serif;font-size:20px;color:var(--gold-bright);line-height:1;text-shadow:0 0 18px rgba(201,168,76,0.55);letter-spacing:2px;}
-.logo-lat{font-family:'Cinzel',serif;font-size:8px;color:var(--gold-dim);letter-spacing:4px;text-transform:uppercase;}
-.streak-chip{display:flex;align-items:center;gap:6px;background:linear-gradient(135deg,#130e00,#20160a);border:1px solid var(--gold-dim);border-radius:22px;padding:5px 12px;cursor:pointer;transition:all .3s;}
-.streak-chip:hover{border-color:var(--gold);box-shadow:var(--glow);}
-.s-num{font-family:'Cinzel',serif;font-size:17px;font-weight:700;color:var(--gold-bright);line-height:1;}
-.s-sub{font-size:9px;color:var(--gold-dim);letter-spacing:1px;}
+.hdr{padding:11px 16px 9px;display:flex;align-items:center;justify-content:space-between;background:rgba(2,4,8,0.98);backdrop-filter:blur(20px);border-bottom:1px solid var(--border-gold);flex-shrink:0;z-index:50;}
+.logo-heb{font-family:'Noto Serif Hebrew',serif;font-size:20px;color:var(--gold-bright);line-height:1;text-shadow:0 0 28px rgba(255,230,0,1),0 0 56px rgba(255,196,0,0.6);letter-spacing:2px;}
+.logo-lat{font-family:'Cinzel',serif;font-size:8px;color:var(--gold);letter-spacing:4px;text-transform:uppercase;}
+.streak-chip{display:flex;align-items:center;gap:6px;background:linear-gradient(135deg,#1f1000,#331a00);border:1px solid rgba(255,196,0,0.9);border-radius:22px;padding:5px 12px;cursor:pointer;transition:all .3s;box-shadow:0 0 18px rgba(255,196,0,0.5),inset 0 0 16px rgba(255,196,0,0.12);}
+.streak-chip:hover{border-color:var(--gold-bright);box-shadow:0 0 32px rgba(255,230,0,0.55);}
+.s-num{font-family:'Cinzel',serif;font-size:17px;font-weight:700;color:var(--gold-bright);line-height:1;text-shadow:0 0 16px rgba(255,230,0,0.9);}
+.s-sub{font-size:9px;color:var(--gold);letter-spacing:1px;}
 
 /* ── SCROLL ── */
 .sw{flex:1;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;padding-bottom:14px;}
@@ -92,30 +76,30 @@ body::before{content:'';position:fixed;inset:0;
 @keyframes rise{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
 
 /* ── BOTTOM NAV ── */
-.bnav{flex-shrink:0;background:rgba(7,9,15,0.98);border-top:1px solid var(--border-gold);backdrop-filter:blur(20px);display:flex;justify-content:space-around;padding:7px 0 15px;z-index:50;}
+.bnav{flex-shrink:0;background:rgba(4,6,12,0.98);border-top:1px solid var(--border-gold);backdrop-filter:blur(20px);display:flex;justify-content:space-around;padding:7px 0 15px;z-index:50;}
 .ni{display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;padding:5px 8px;border-radius:11px;transition:all .2s;border:1px solid transparent;}
-.ni.active{background:rgba(201,168,76,0.08);border-color:var(--border-gold);}
+.ni.active{background:rgba(255,196,0,0.38);border-color:var(--border-gold);box-shadow:0 0 18px rgba(255,196,0,0.38);}
 .ni-icon{font-size:15px;}
 .ni-lbl{font-family:'Cinzel',serif;font-size:7px;color:var(--text-3);letter-spacing:1px;text-transform:uppercase;}
-.ni.active .ni-lbl{color:var(--gold);}
+.ni.active .ni-lbl{color:var(--gold-bright);}
 /* Zikaron nav icon uses Hebrew text */
 .ni-zk-ico{font-family:'Noto Serif Hebrew',serif;font-size:13px;color:var(--text-3);line-height:1;}
-.ni#ni-zikaron.active .ni-zk-ico{color:var(--gold-bright);text-shadow:0 0 8px rgba(201,168,76,0.4);}
+.ni#ni-zikaron.active .ni-zk-ico{color:var(--gold-bright);text-shadow:0 0 14px rgba(255,230,0,0.8);}
 
 /* ── UTILS ── */
 .sec-lbl{font-family:'Cinzel',serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;margin:18px 0 8px;display:flex;align-items:center;gap:8px;}
-.sec-lbl::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,currentColor,transparent);opacity:.2;}
-.sl-today{color:var(--gold-dim);}
-.sl-study{color:#38bdf8;}
-.sl-amar{color:#e879f9;}
-.sl-prayer{color:#86efac;}
-.sl-plan{color:var(--gold-dim);}
+.sec-lbl::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,currentColor,transparent);opacity:.45;}
+.sl-today{color:#ffc400;}
+.sl-study{color:#00eeff;}
+.sl-amar{color:#ff00ff;}
+.sl-prayer{color:#00ff99;}
+.sl-plan{color:#ffc400;}
 .sl-wfy{color:var(--c-wfy);}
 
-.btn-gold{display:block;width:100%;padding:12px;background:linear-gradient(135deg,#1a1200,#2e1e00);border:1px solid var(--gold-dim);border-radius:12px;color:var(--gold-bright);font-family:'Cinzel',serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .3s;text-align:center;outline:none;}
-.btn-gold:hover{background:linear-gradient(135deg,#2a1e00,#3e2a00);border-color:var(--gold);box-shadow:var(--glow-strong);transform:translateY(-1px);}
+.btn-gold{display:block;width:100%;padding:12px;background:linear-gradient(135deg,#221700,#3a2400);border:1px solid rgba(255,196,0,0.6);border-radius:12px;color:var(--gold-bright);font-family:'Cinzel',serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .3s;text-align:center;outline:none;box-shadow:0 0 18px rgba(255,196,0,0.2);}
+.btn-gold:hover{background:linear-gradient(135deg,#331f00,#4a2e00);border-color:var(--gold-bright);box-shadow:var(--glow-strong);transform:translateY(-1px);}
 .btn-ghost{display:block;width:100%;padding:10px;background:transparent;border:1px solid var(--border);border-radius:11px;color:var(--text-2);font-family:'Cinzel',serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .22s;text-align:center;margin-top:7px;outline:none;}
-.btn-ghost:hover{border-color:var(--border-gold);color:var(--gold);}
+.btn-ghost:hover{border-color:var(--border-gold);color:var(--gold-bright);}
 
 /* ════════════════════════════════
    TODAY SCREEN
@@ -126,16 +110,16 @@ body::before{content:'';position:fixed;inset:0;
 /* ════════════════════════════════
    ZIKARON BANNER — Today screen
 ════════════════════════════════ */
-.zikaron-banner{background:linear-gradient(135deg,#0e0618,#1a0a0a,#061214);border:1px solid rgba(255,107,107,0.2);border-radius:18px;padding:0;margin-bottom:14px;overflow:hidden;cursor:default;}
-.zikaron-banner-hdr{display:flex;align-items:center;gap:9px;padding:11px 14px 9px;border-bottom:1px solid rgba(255,255,255,0.05);}
-.zk-heb{font-family:'Noto Serif Hebrew',serif;font-size:16px;color:var(--gold-bright);text-shadow:0 0 14px rgba(201,168,76,0.45);line-height:1;}
+.zikaron-banner{background:linear-gradient(135deg,#10051e,#1e0808,#051216);border:1px solid rgba(255,60,0,0.7);border-radius:18px;padding:0;margin-bottom:14px;overflow:hidden;cursor:default;}
+.zikaron-banner-hdr{display:flex;align-items:center;gap:9px;padding:11px 14px 9px;border-bottom:1px solid rgba(255,255,255,0.15);}
+.zk-heb{font-family:'Noto Serif Hebrew',serif;font-size:16px;color:var(--gold-bright);text-shadow:0 0 20px rgba(255,220,0,0.8);line-height:1;}
 .zk-title{font-family:'Cinzel',serif;font-size:9px;letter-spacing:3px;color:var(--gold-dim);text-transform:uppercase;}
 .zk-edit{margin-left:auto;padding:3px 9px;background:rgba(201,168,76,0.08);border:1px solid var(--border-gold);border-radius:7px;color:var(--gold);font-family:'Cinzel',serif;font-size:7px;letter-spacing:1px;cursor:pointer;outline:none;transition:all .2s;text-transform:uppercase;}
 .zk-edit:hover{background:rgba(201,168,76,0.15);}
 .zikaron-cards{display:grid;grid-template-columns:1fr 1fr;gap:0;}
 /* Year card */
 .zk-card{padding:12px 14px;position:relative;overflow:hidden;}
-.zk-card-yr{border-right:1px solid rgba(255,255,255,0.05);}
+.zk-card-yr{border-right:1px solid rgba(255,255,255,0.1);}
 .zk-card-mo{border-left:none;}
 .zk-card-type{font-family:'Cinzel',serif;font-size:7px;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;display:flex;align-items:center;gap:5px;}
 .zk-card-yr .zk-card-type{color:rgba(255,107,107,0.6);}
@@ -147,8 +131,8 @@ body::before{content:'';position:fixed;inset:0;
 .zk-card-yr .zk-ref{color:var(--c-wfy-bright);}
 .zk-card-mo .zk-ref{color:var(--c-wfm-bright);}
 .zk-word-chip{display:inline-block;font-family:'Cinzel',serif;font-size:11px;font-weight:700;letter-spacing:1px;border-radius:7px;padding:3px 10px;margin-bottom:4px;}
-.zk-card-yr .zk-word-chip{color:var(--c-wfy);background:rgba(255,107,107,0.1);border:1px solid rgba(255,107,107,0.22);}
-.zk-card-mo .zk-word-chip{color:var(--c-wfm);background:rgba(45,212,191,0.1);border:1px solid rgba(45,212,191,0.22);}
+.zk-card-yr .zk-word-chip{color:var(--c-wfy);background:rgba(255,34,0,0.18);border:1px solid rgba(255,34,0,0.45);}
+.zk-card-mo .zk-word-chip{color:var(--c-wfm);background:rgba(0,255,238,0.15);border:1px solid rgba(0,255,238,0.45);}
 .zk-verse-snip{font-size:10px;font-style:italic;color:var(--text-2);line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
 .zk-empty{font-size:10px;color:var(--text-3);font-style:italic;text-align:center;padding:8px 0;cursor:pointer;}
 .zk-card-yr .zk-empty{color:rgba(255,107,107,0.35);}
@@ -158,26 +142,26 @@ body::before{content:'';position:fixed;inset:0;
    ZIKARON TABBED PANEL — Study
 ════════════════════════════════ */
 .zikaron-panel{border-radius:18px;overflow:hidden;margin-bottom:14px;}
-.zikaron-panel-hdr{padding:12px 15px;background:linear-gradient(135deg,#0e0618,#1a0a0a,#061214);border-bottom:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;gap:10px;}
-.zk-panel-heb{font-family:'Noto Serif Hebrew',serif;font-size:19px;color:var(--gold-bright);text-shadow:0 0 16px rgba(201,168,76,0.45);}
+.zikaron-panel-hdr{padding:12px 15px;background:linear-gradient(135deg,#0e0618,#1a0a0a,#061214);border-bottom:1px solid rgba(255,255,255,0.12);display:flex;align-items:center;gap:10px;}
+.zk-panel-heb{font-family:'Noto Serif Hebrew',serif;font-size:19px;color:var(--gold-bright);text-shadow:0 0 16px rgba(255,220,0,0.85);}
 .zk-panel-info{flex:1;}
 .zk-panel-title{font-family:'Cinzel',serif;font-size:12px;color:var(--gold);letter-spacing:1.5px;font-weight:600;}
 .zk-panel-sub{font-size:9px;color:var(--gold-dim);letter-spacing:.5px;margin-top:1px;}
 /* Tab bar */
-.zk-tabs{display:flex;border-bottom:1px solid rgba(255,255,255,0.06);}
+.zk-tabs{display:flex;border-bottom:1px solid rgba(255,255,255,0.12);}
 .zk-tab{flex:1;padding:10px 4px;text-align:center;cursor:pointer;font-family:'Cinzel',serif;font-size:9px;letter-spacing:1px;text-transform:uppercase;border-bottom:2px solid transparent;transition:all .22s;background:none;border-top:none;border-left:none;border-right:none;outline:none;}
 .zk-tab-yr{color:rgba(255,107,107,0.5);}
-.zk-tab-yr.zk-active{color:var(--c-wfy);border-bottom-color:var(--c-wfy);background:rgba(255,107,107,0.05);}
+.zk-tab-yr.zk-active{color:var(--c-wfy);border-bottom-color:var(--c-wfy);background:rgba(255,34,0,0.18);}
 .zk-tab-mo{color:rgba(45,212,191,0.5);}
-.zk-tab-mo.zk-active{color:var(--c-wfm);border-bottom-color:var(--c-wfm);background:rgba(45,212,191,0.05);}
+.zk-tab-mo.zk-active{color:var(--c-wfm);border-bottom-color:var(--c-wfm);background:rgba(0,255,238,0.15);}
 .zk-tab-daily{color:rgba(253,230,138,0.5);}
-.zk-tab-daily.zk-active{color:var(--c-word);border-bottom-color:var(--c-word);background:rgba(253,230,138,0.05);}
+.zk-tab-daily.zk-active{color:var(--c-word);border-bottom-color:var(--c-word);background:rgba(255,220,0,0.15);}
 .zk-tab-pane{display:none;padding:14px;background:var(--card);}
 .zk-tab-pane.zk-active{display:block;}
 /* Display card inside tab */
 .zk-disp{border-radius:12px;padding:13px;margin-bottom:11px;position:relative;}
-.zk-disp-yr{background:rgba(255,107,107,0.05);border:1px solid rgba(255,107,107,0.18);}
-.zk-disp-mo{background:rgba(45,212,191,0.05);border:1px solid rgba(45,212,191,0.18);}
+.zk-disp-yr{background:rgba(255,34,0,0.18);border:1px solid rgba(255,107,107,0.18);}
+.zk-disp-mo{background:rgba(0,255,238,0.15);border:1px solid rgba(45,212,191,0.18);}
 .zk-disp-ref{font-family:'Cinzel',serif;font-size:11px;letter-spacing:1px;margin-bottom:7px;display:flex;align-items:center;gap:6px;}
 .zk-disp-yr .zk-disp-ref{color:var(--c-wfy);}
 .zk-disp-mo .zk-disp-ref{color:var(--c-wfm);}
@@ -186,52 +170,52 @@ body::before{content:'';position:fixed;inset:0;
 .zk-disp-mo .zk-disp-ref::before{background:var(--c-wfm);}
 .zk-disp-verse{font-size:13px;font-style:italic;color:var(--text);line-height:1.7;margin-bottom:9px;}
 .zk-big-word{display:inline-flex;align-items:center;gap:6px;font-family:'Cinzel',serif;font-size:14px;font-weight:700;letter-spacing:1.5px;border-radius:10px;padding:6px 15px;margin-bottom:6px;}
-.zk-disp-yr .zk-big-word{color:var(--c-wfy-bright);background:rgba(255,107,107,0.1);border:1px solid rgba(255,107,107,0.28);text-shadow:0 0 12px rgba(255,107,107,0.4);}
-.zk-disp-mo .zk-big-word{color:var(--c-wfm-bright);background:rgba(45,212,191,0.1);border:1px solid rgba(45,212,191,0.28);text-shadow:0 0 12px rgba(45,212,191,0.4);}
+.zk-disp-yr .zk-big-word{color:var(--c-wfy-bright);background:rgba(255,34,0,0.15);border:1px solid rgba(255,34,0,0.45);text-shadow:0 0 20px rgba(255,34,0,0.7);}
+.zk-disp-mo .zk-big-word{color:var(--c-wfm-bright);background:rgba(0,255,238,0.12);border:1px solid rgba(0,255,238,0.45);text-shadow:0 0 20px rgba(0,255,238,0.7);}
 .zk-big-word::before{content:'✦';font-size:10px;opacity:.6;}
 .zk-meaning{font-size:12px;color:var(--text-2);font-style:italic;line-height:1.6;margin-top:6px;}
 .zk-disp-edit{display:block;width:100%;margin-top:9px;padding:7px;border-radius:8px;font-family:'Cinzel',serif;font-size:9px;letter-spacing:1px;cursor:pointer;transition:all .2s;outline:none;text-transform:uppercase;text-align:center;}
-.zk-disp-yr .zk-disp-edit{background:rgba(255,107,107,0.08);border:1px solid rgba(255,107,107,0.22);color:var(--c-wfy);}
-.zk-disp-yr .zk-disp-edit:hover{background:rgba(255,107,107,0.16);}
-.zk-disp-mo .zk-disp-edit{background:rgba(45,212,191,0.08);border:1px solid rgba(45,212,191,0.22);color:var(--c-wfm);}
-.zk-disp-mo .zk-disp-edit:hover{background:rgba(45,212,191,0.16);}
+.zk-disp-yr .zk-disp-edit{background:rgba(255,34,0,0.2);border:1px solid rgba(255,34,0,0.55);color:var(--c-wfy);}
+.zk-disp-yr .zk-disp-edit:hover{background:rgba(255,34,0,0.32);}
+.zk-disp-mo .zk-disp-edit{background:rgba(0,255,238,0.15);border:1px solid rgba(0,255,238,0.55);color:var(--c-wfm);}
+.zk-disp-mo .zk-disp-edit:hover{background:rgba(0,255,238,0.28);}
 /* Form inside tab */
 .zk-form{border-radius:12px;padding:13px;border:1px dashed;}
-.zk-form-yr{border-color:rgba(255,107,107,0.2);background:rgba(255,107,107,0.03);}
-.zk-form-mo{border-color:rgba(45,212,191,0.2);background:rgba(45,212,191,0.03);}
+.zk-form-yr{border-color:rgba(255,34,0,0.5);background:rgba(255,34,0,0.08);}
+.zk-form-mo{border-color:rgba(0,255,238,0.5);background:rgba(0,255,238,0.07);}
 .zk-form-lbl{font-family:'Cinzel',serif;font-size:8px;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
 .zk-form-yr .zk-form-lbl{color:rgba(255,107,107,0.5);}
 .zk-form-mo .zk-form-lbl{color:rgba(45,212,191,0.5);}
 .zk-inp{width:100%;border-radius:8px;padding:9px 11px;color:var(--text);font-family:'Lora',serif;font-size:13px;outline:none;transition:border-color .22s;margin-bottom:7px;background:rgba(0,0,0,0.35);border:1px solid;}
-.zk-form-yr .zk-inp{border-color:rgba(255,107,107,0.15);}
-.zk-form-yr .zk-inp:focus{border-color:rgba(255,107,107,0.4);}
+.zk-form-yr .zk-inp{border-color:rgba(255,34,0,0.4);}
+.zk-form-yr .zk-inp:focus{border-color:rgba(255,34,0,0.8);}
 .zk-form-yr .zk-inp::placeholder{color:rgba(255,107,107,0.25);font-style:italic;}
-.zk-form-mo .zk-inp{border-color:rgba(45,212,191,0.15);}
-.zk-form-mo .zk-inp:focus{border-color:rgba(45,212,191,0.4);}
+.zk-form-mo .zk-inp{border-color:rgba(0,255,238,0.4);}
+.zk-form-mo .zk-inp:focus{border-color:rgba(0,255,238,0.8);}
 .zk-form-mo .zk-inp::placeholder{color:rgba(45,212,191,0.25);font-style:italic;}
 .zk-ta{width:100%;border-radius:8px;padding:9px 11px;color:var(--text);font-family:'Lora',serif;font-size:13px;line-height:1.65;resize:none;min-height:75px;outline:none;transition:border-color .22s;margin-bottom:7px;background:rgba(0,0,0,0.35);border:1px solid;}
-.zk-form-yr .zk-ta{border-color:rgba(255,107,107,0.15);}
-.zk-form-yr .zk-ta:focus{border-color:rgba(255,107,107,0.4);}
+.zk-form-yr .zk-ta{border-color:rgba(255,34,0,0.4);}
+.zk-form-yr .zk-ta:focus{border-color:rgba(255,34,0,0.8);}
 .zk-form-yr .zk-ta::placeholder{color:rgba(255,107,107,0.25);font-style:italic;}
-.zk-form-mo .zk-ta{border-color:rgba(45,212,191,0.15);}
-.zk-form-mo .zk-ta:focus{border-color:rgba(45,212,191,0.4);}
+.zk-form-mo .zk-ta{border-color:rgba(0,255,238,0.4);}
+.zk-form-mo .zk-ta:focus{border-color:rgba(0,255,238,0.8);}
 .zk-form-mo .zk-ta::placeholder{color:rgba(45,212,191,0.25);font-style:italic;}
 .zk-save-btn{display:block;width:100%;padding:11px;border-radius:9px;font-family:'Cinzel',serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .3s;text-align:center;outline:none;border:1px solid;}
-.zk-form-yr .zk-save-btn{background:rgba(255,107,107,0.12);border-color:rgba(255,107,107,0.32);color:var(--c-wfy-bright);}
-.zk-form-yr .zk-save-btn:hover{background:rgba(255,107,107,0.22);box-shadow:var(--glow-red);}
-.zk-form-mo .zk-save-btn{background:rgba(45,212,191,0.12);border-color:rgba(45,212,191,0.32);color:var(--c-wfm-bright);}
-.zk-form-mo .zk-save-btn:hover{background:rgba(45,212,191,0.22);box-shadow:var(--glow-teal);}
+.zk-form-yr .zk-save-btn{background:rgba(255,34,0,0.25);border-color:rgba(255,34,0,0.7);color:var(--c-wfy-bright);}
+.zk-form-yr .zk-save-btn:hover{background:rgba(255,34,0,0.38);box-shadow:var(--glow-red);}
+.zk-form-mo .zk-save-btn{background:rgba(0,255,238,0.2);border-color:rgba(0,255,238,0.7);color:var(--c-wfm-bright);}
+.zk-form-mo .zk-save-btn:hover{background:rgba(0,255,238,0.35);box-shadow:var(--glow-teal);}
 /* History */
 .zk-hist{margin-top:11px;}
 .zk-hist-lbl{font-family:'Cinzel',serif;font-size:8px;letter-spacing:2px;text-transform:uppercase;margin-bottom:7px;}
 .zk-form-yr .zk-hist-lbl,.zk-hist-yr-lbl{color:rgba(255,107,107,0.35);}
 .zk-form-mo .zk-hist-lbl,.zk-hist-mo-lbl{color:rgba(45,212,191,0.35);}
 .zk-hist-entry{border-radius:8px;padding:9px 11px;margin-bottom:5px;display:flex;align-items:flex-start;gap:9px;position:relative;}
-.zk-hist-yr-entry{background:rgba(255,107,107,0.04);border:1px solid rgba(255,107,107,0.1);}
-.zk-hist-mo-entry{background:rgba(45,212,191,0.04);border:1px solid rgba(45,212,191,0.1);}
+.zk-hist-yr-entry{background:rgba(255,34,0,0.1);border:1px solid rgba(255,34,0,0.35);}
+.zk-hist-mo-entry{background:rgba(0,255,238,0.07);border:1px solid rgba(0,255,238,0.35);}
 .zk-hist-period{font-family:'Cinzel',serif;font-size:8px;letter-spacing:.5px;white-space:nowrap;margin-top:2px;}
-.zk-hist-yr-entry .zk-hist-period{color:rgba(255,107,107,0.4);}
-.zk-hist-mo-entry .zk-hist-period{color:rgba(45,212,191,0.4);}
+.zk-hist-yr-entry .zk-hist-period{color:rgba(255,34,0,0.8);}
+.zk-hist-mo-entry .zk-hist-period{color:rgba(0,255,238,0.8);}
 .zk-hist-content{flex:1;}
 .zk-hist-ref{font-family:'Cinzel',serif;font-size:10px;margin-bottom:1px;}
 .zk-hist-yr-entry .zk-hist-ref{color:var(--c-wfy);}
@@ -245,7 +229,7 @@ body::before{content:'';position:fixed;inset:0;
 /* Summary strip */
 .dash-full{background:linear-gradient(135deg,#070b16,#0e0b00);border:1px solid var(--border-gold);border-radius:15px;padding:13px 16px;margin-bottom:13px;display:flex;align-items:center;justify-content:space-between;gap:7px;}
 .df-s{text-align:center;flex:1;}
-.df-n{font-family:'Cinzel Decorative',serif;font-size:24px;color:var(--gold);text-shadow:0 0 18px rgba(201,168,76,0.4);line-height:1;}
+.df-n{font-family:'Cinzel Decorative',serif;font-size:24px;color:var(--gold);text-shadow:0 0 18px rgba(255,196,0,0.75);line-height:1;}
 .df-l{font-family:'Cinzel',serif;font-size:8px;color:var(--gold-dim);letter-spacing:1.5px;text-transform:uppercase;margin-top:2px;}
 .df-div{width:1px;height:32px;background:var(--border-gold);}
 
@@ -258,10 +242,10 @@ body::before{content:'';position:fixed;inset:0;
 .wd{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;}
 .wd-n{font-family:'Cinzel',serif;font-size:8px;color:var(--text-3);}
 .wd-d{width:28px;height:28px;border-radius:50%;background:var(--deep);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:10px;transition:all .3s;}
-.wd-d.done{background:linear-gradient(135deg,var(--gold-dim),var(--gold));border-color:var(--gold);box-shadow:0 0 8px rgba(201,168,76,0.3);}
+.wd-d.done{background:linear-gradient(135deg,#8a6500,#ffe84d);border-color:#ffbe00;box-shadow:0 0 14px rgba(255,190,0,0.55);}
 .wd-d.today{border-color:var(--gold-bright);animation:pls 2s infinite;}
-.wd-d.today.done{background:linear-gradient(135deg,var(--gold-dim),var(--gold-bright));animation:pls 2s infinite;}
-@keyframes pls{0%,100%{box-shadow:0 0 7px rgba(201,168,76,0.35)}50%{box-shadow:0 0 16px rgba(201,168,76,0.65)}}
+.wd-d.today.done{background:linear-gradient(135deg,#8a6500,#ffe84d);animation:pls 2s infinite;}
+@keyframes pls{0%,100%{box-shadow:0 0 10px rgba(255,190,0,0.5)}50%{box-shadow:0 0 22px rgba(255,232,77,0.9)}}
 
 /* Prayer cells */
 .prayer-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;margin-bottom:5px;}
@@ -269,21 +253,21 @@ body::before{content:'';position:fixed;inset:0;
 .pr-cell::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;transition:opacity .3s;opacity:0;}
 .pr-cell.rung::after{opacity:1;}
 .pr-cell:hover{transform:translateY(-3px);}
-.pr-9a  {background:rgba(253,230,138,0.07);border-color:rgba(253,230,138,0.2);}
+.pr-9a  {background:rgba(255,224,0,0.1);border-color:rgba(255,224,0,0.35);}
 .pr-9a::after{background:var(--pr-9a);}
-.pr-9a.rung{background:rgba(253,230,138,0.14);border-color:rgba(253,230,138,0.45);}
-.pr-12p {background:rgba(134,239,172,0.07);border-color:rgba(134,239,172,0.2);}
+.pr-9a.rung{background:rgba(255,224,0,0.2);border-color:rgba(255,224,0,0.7);box-shadow:0 0 20px rgba(255,224,0,0.55);}
+.pr-12p {background:rgba(0,255,153,0.1);border-color:rgba(0,255,153,0.35);}
 .pr-12p::after{background:var(--pr-12p);}
-.pr-12p.rung{background:rgba(134,239,172,0.14);border-color:rgba(134,239,172,0.45);}
-.pr-3p  {background:rgba(147,197,253,0.07);border-color:rgba(147,197,253,0.2);}
+.pr-12p.rung{background:rgba(0,255,153,0.2);border-color:rgba(0,255,153,0.7);box-shadow:0 0 20px rgba(0,255,153,0.55);}
+.pr-3p  {background:rgba(0,221,255,0.1);border-color:rgba(0,221,255,0.35);}
 .pr-3p::after{background:var(--pr-3p);}
-.pr-3p.rung{background:rgba(147,197,253,0.14);border-color:rgba(147,197,253,0.45);}
-.pr-6p  {background:rgba(249,168,212,0.07);border-color:rgba(249,168,212,0.2);}
+.pr-3p.rung{background:rgba(0,221,255,0.2);border-color:rgba(0,221,255,0.7);box-shadow:0 0 20px rgba(0,221,255,0.55);}
+.pr-6p  {background:rgba(255,0,119,0.1);border-color:rgba(255,0,119,0.35);}
 .pr-6p::after{background:var(--pr-6p);}
-.pr-6p.rung{background:rgba(249,168,212,0.14);border-color:rgba(249,168,212,0.45);}
-.pr-9pm {background:rgba(196,181,253,0.07);border-color:rgba(196,181,253,0.2);}
+.pr-6p.rung{background:rgba(255,0,119,0.2);border-color:rgba(255,0,119,0.7);box-shadow:0 0 20px rgba(255,0,119,0.55);}
+.pr-9pm {background:rgba(204,0,255,0.1);border-color:rgba(204,0,255,0.35);}
 .pr-9pm::after{background:var(--pr-9pm);}
-.pr-9pm.rung{background:rgba(196,181,253,0.14);border-color:rgba(196,181,253,0.45);}
+.pr-9pm.rung{background:rgba(204,0,255,0.2);border-color:rgba(204,0,255,0.7);box-shadow:0 0 20px rgba(204,0,255,0.55);}
 .pr-bell{font-size:16px;}
 .pr-lbl{font-family:'Cinzel',serif;font-size:8px;letter-spacing:.3px;}
 .pr-9a  .pr-lbl{color:var(--pr-9a);}
@@ -325,26 +309,26 @@ body::before{content:'';position:fixed;inset:0;
 /* Plan cards */
 .plan-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:12px 14px;margin-bottom:8px;cursor:pointer;transition:all .25s;position:relative;overflow:hidden;}
 .plan-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;border-radius:3px 0 0 3px;}
-.pc-gold::before{background:var(--gold);}
-.pc-violet::before{background:#aa00ff;}
-.pc-emerald::before{background:#00e676;}
-.pc-sapphire::before{background:#3b82f6;}
-.pc-rose::before{background:#f43f5e;}
-.pc-teal::before{background:#14b8a6;}
-.pc-orange::before{background:#f97316;}
+.pc-gold::before{background:#ffc400;}
+.pc-violet::before{background:#cc00ff;}
+.pc-emerald::before{background:#00ff66;}
+.pc-sapphire::before{background:#0099ff;}
+.pc-rose::before{background:#ff0044;}
+.pc-teal::before{background:#00eeff;}
+.pc-orange::before{background:#ff6600;}
 .plan-card:hover{border-color:var(--border-gold);transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,0,0,0.4);}
 .pc-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;}
 .pc-nm{font-family:'Cinzel',serif;font-size:12px;font-weight:600;color:var(--text);flex:1;padding-right:8px;line-height:1.3;}
-.pc-day{font-family:'Cinzel',serif;font-size:10px;color:var(--gold);background:rgba(201,168,76,0.1);border:1px solid var(--border-gold);border-radius:7px;padding:2px 9px;white-space:nowrap;}
+.pc-day{font-family:'Cinzel',serif;font-size:10px;color:var(--gold);background:rgba(255,196,0,0.2);border:1px solid var(--border-gold);border-radius:7px;padding:2px 9px;white-space:nowrap;}
 .pc-bar{height:2px;background:var(--deep);border-radius:2px;overflow:hidden;margin-bottom:4px;}
 .pc-fill{height:100%;border-radius:2px;transition:width .6s;}
-.pc-gold .pc-fill{background:linear-gradient(90deg,#7a5f18,var(--gold-bright));}
-.pc-violet .pc-fill{background:linear-gradient(90deg,#5500aa,#cc44ff);}
-.pc-emerald .pc-fill{background:linear-gradient(90deg,#007a40,#00ff88);}
-.pc-sapphire .pc-fill{background:linear-gradient(90deg,#1e3a8a,#93c5fd);}
-.pc-rose .pc-fill{background:linear-gradient(90deg,#881337,#fda4af);}
-.pc-teal .pc-fill{background:linear-gradient(90deg,#134e4a,#5eead4);}
-.pc-orange .pc-fill{background:linear-gradient(90deg,#7c2d12,#fdba74);}
+.pc-gold .pc-fill{background:linear-gradient(90deg,#996600,#ffe600);}
+.pc-violet .pc-fill{background:linear-gradient(90deg,#7700cc,#ff00ff);}
+.pc-emerald .pc-fill{background:linear-gradient(90deg,#008844,#00ff66);}
+.pc-sapphire .pc-fill{background:linear-gradient(90deg,#0044bb,#00bbff);}
+.pc-rose .pc-fill{background:linear-gradient(90deg,#aa0033,#ff0055);}
+.pc-teal .pc-fill{background:linear-gradient(90deg,#008899,#00eeff);}
+.pc-orange .pc-fill{background:linear-gradient(90deg,#aa3300,#ff7700);}
 .pc-meta{display:flex;justify-content:space-between;font-size:10px;color:var(--text-3);font-family:'Cinzel',serif;}
 
 /* ════════════════════════════════
@@ -352,71 +336,71 @@ body::before{content:'';position:fixed;inset:0;
 ════════════════════════════════ */
 .plan-pills{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;}
 .mpill{padding:5px 11px;border-radius:20px;border:1px solid var(--border);background:var(--card);color:var(--text-2);font-family:'Cinzel',serif;font-size:9px;letter-spacing:1px;cursor:pointer;transition:all .22s;text-transform:uppercase;outline:none;}
-.mpill.active,.mpill:hover{border-color:var(--border-gold);color:var(--gold);background:rgba(201,168,76,0.07);}
+.mpill.active,.mpill:hover{border-color:var(--border-gold);color:var(--gold);background:rgba(255,196,0,0.18);}
 
 /* Method tabs */
 .method-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;}
 .mtab{padding:6px 13px;border-radius:20px;border:1.5px solid;font-family:'Cinzel',serif;font-size:9px;letter-spacing:1px;cursor:pointer;transition:all .22s;text-transform:uppercase;outline:none;background:transparent;font-weight:600;}
-.mtab-soap{border-color:rgba(201,168,76,0.3);color:#c9a84c;}
-.mtab-soap.active,.mtab-soap:hover{background:rgba(201,168,76,0.12);border-color:var(--gold);}
-.mtab-star{border-color:rgba(249,115,22,0.3);color:#fb923c;}
-.mtab-star.active,.mtab-star:hover{background:rgba(249,115,22,0.1);border-color:#f97316;}
-.mtab-oia{border-color:rgba(96,165,250,0.3);color:#60a5fa;}
-.mtab-oia.active,.mtab-oia:hover{background:rgba(96,165,250,0.1);border-color:#3b82f6;}
-.mtab-reap{border-color:rgba(251,191,36,0.3);color:#fbbf24;}
-.mtab-reap.active,.mtab-reap:hover{background:rgba(251,191,36,0.1);border-color:#f59e0b;}
-.mtab-5r{border-color:rgba(167,139,250,0.3);color:#a78bfa;}
-.mtab-5r.active,.mtab-5r:hover{background:rgba(167,139,250,0.1);border-color:#8b5cf6;}
+.mtab-soap{border-color:rgba(255,196,0,0.55);color:#ffc400;}
+.mtab-soap.active,.mtab-soap:hover{background:rgba(255,196,0,0.22);border-color:var(--gold-bright);}
+.mtab-star{border-color:rgba(255,102,0,0.6);color:#ff6600;}
+.mtab-star.active,.mtab-star:hover{background:rgba(255,102,0,0.2);border-color:#ff6600;}
+.mtab-oia{border-color:rgba(0,153,255,0.6);color:#0099ff;}
+.mtab-oia.active,.mtab-oia:hover{background:rgba(0,153,255,0.2);border-color:#0099ff;}
+.mtab-reap{border-color:rgba(255,200,0,0.6);color:#ffcc00;}
+.mtab-reap.active,.mtab-reap:hover{background:rgba(255,200,0,0.2);border-color:#ffcc00;}
+.mtab-5r{border-color:rgba(153,85,255,0.6);color:#9955ff;}
+.mtab-5r.active,.mtab-5r:hover{background:rgba(153,85,255,0.2);border-color:#9955ff;}
 
 /* Method boxes */
 .method-box{display:none;border-radius:16px;overflow:hidden;margin-bottom:14px;border:1px solid;}
 .method-box.active{display:block;}
-.mb-soap{border-color:rgba(201,168,76,0.3);}
-.mb-star{border-color:rgba(249,115,22,0.3);}
-.mb-oia {border-color:rgba(96,165,250,0.3);}
-.mb-reap{border-color:rgba(251,191,36,0.3);}
-.mb-5r  {border-color:rgba(167,139,250,0.3);}
+.mb-soap{border-color:rgba(255,224,0,0.75);box-shadow:0 0 18px rgba(255,224,0,0.1);}
+.mb-star{border-color:rgba(255,102,0,0.75);box-shadow:0 0 18px rgba(255,102,0,0.1);}
+.mb-oia {border-color:rgba(0,153,255,0.75);box-shadow:0 0 18px rgba(0,153,255,0.1);}
+.mb-reap{border-color:rgba(255,221,0,0.75);box-shadow:0 0 18px rgba(255,221,0,0.1);}
+.mb-5r  {border-color:rgba(153,85,255,0.75);box-shadow:0 0 18px rgba(153,85,255,0.1);}
 .method-hdr{padding:10px 14px;display:flex;align-items:center;gap:8px;}
-.mb-soap .method-hdr{background:linear-gradient(135deg,#1a1400,#252000);}
-.mb-star .method-hdr{background:linear-gradient(135deg,#1a0e00,#251500);}
-.mb-oia  .method-hdr{background:linear-gradient(135deg,#0a1020,#0e1830);}
-.mb-reap .method-hdr{background:linear-gradient(135deg,#1a1400,#201a00);}
-.mb-5r   .method-hdr{background:linear-gradient(135deg,#0f0a20,#17103a);}
+.mb-soap .method-hdr{background:linear-gradient(135deg,#241c00,#332800);}
+.mb-star .method-hdr{background:linear-gradient(135deg,#2a1400,#3a1a00);}
+.mb-oia  .method-hdr{background:linear-gradient(135deg,#0a1428,#0e1e40);}
+.mb-reap .method-hdr{background:linear-gradient(135deg,#261c00,#302400);}
+.mb-5r   .method-hdr{background:linear-gradient(135deg,#150e2e,#1e1450);}
 .mh-title{font-family:'Cinzel',serif;font-size:12px;font-weight:600;}
 .mh-full{font-size:10px;color:var(--text-3);letter-spacing:.5px;}
 .step-tabs{display:flex;border-bottom:1px solid var(--border);}
 .step-tab{flex:1;padding:9px 4px;text-align:center;cursor:pointer;font-family:'Cinzel',serif;font-size:9px;letter-spacing:.3px;border-bottom:2px solid transparent;transition:all .2s;background:none;border-top:none;border-left:none;border-right:none;outline:none;text-transform:uppercase;color:var(--text-3);}
 .step-ico{display:block;font-size:14px;margin-bottom:2px;}
-.step-tab.active{border-bottom-color:currentColor;}
+.step-tab.active{border-bottom-color:currentColor;text-shadow:0 0 12px currentColor;filter:brightness(1.3);}
 .step-panel{display:none;padding:14px;background:var(--card);}
 .step-panel.active{display:block;}
-.sp-ttl{font-family:'Cinzel',serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;margin-bottom:3px;}
+.sp-ttl{font-family:'Cinzel',serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;margin-bottom:3px;text-shadow:0 0 14px currentColor;}
 .sp-hint{font-size:11px;color:var(--text-3);font-style:italic;margin-bottom:9px;line-height:1.5;}
 .sp-ta{width:100%;background:var(--deep);border:1px solid var(--border);border-radius:9px;padding:11px;color:var(--text);font-family:'Lora',serif;font-size:14px;line-height:1.7;resize:none;min-height:90px;transition:border-color .22s;outline:none;}
 .sp-ta:focus{border-color:var(--gold-dim);}
 .sp-ta::placeholder{color:var(--text-3);font-style:italic;}
-.sv-preview{background:linear-gradient(135deg,#0a0e1c,#0f1330);border:1px solid rgba(139,92,246,0.2);border-radius:10px;padding:12px;margin-top:10px;}
+.sv-preview{background:linear-gradient(135deg,#0a0e1c,#0f1330);border:1px solid rgba(153,85,255,0.55);border-radius:10px;padding:12px;margin-top:10px;}
 .sv-label{font-family:'Cinzel',serif;font-size:8px;color:#a78bfa;letter-spacing:2px;margin-bottom:4px;text-transform:uppercase;}
 .sv-text{font-size:13px;font-style:italic;color:var(--text);line-height:1.6;}
 .sv-ref{font-family:'Cinzel',serif;font-size:10px;color:var(--text-3);text-align:right;margin-top:4px;}
 
 /* Amar HaAv */
-.amar-box{background:linear-gradient(135deg,#0d0620,#160930,#0a0515);border:1px solid rgba(232,121,249,0.25);border-radius:16px;overflow:hidden;margin-bottom:14px;}
-.amar-hdr{padding:12px 15px;background:linear-gradient(135deg,#130826,#1e0c38);border-bottom:1px solid rgba(232,121,249,0.2);display:flex;align-items:center;gap:10px;}
-.amar-heb{font-family:'Noto Serif Hebrew',serif;font-size:17px;color:#e879f9;text-shadow:0 0 15px rgba(232,121,249,0.5);}
+.amar-box{background:linear-gradient(135deg,#0d0620,#160930,#0a0515);border:1px solid rgba(255,0,255,0.5);border-radius:16px;overflow:hidden;margin-bottom:14px;}
+.amar-hdr{padding:12px 15px;background:linear-gradient(135deg,#130826,#1e0c38);border-bottom:1px solid rgba(255,0,255,0.45);display:flex;align-items:center;gap:10px;}
+.amar-heb{font-family:'Noto Serif Hebrew',serif;font-size:17px;color:#e879f9;text-shadow:0 0 15px rgba(255,0,255,0.8);}
 .amar-info{flex:1;}
 .amar-title{font-family:'Cinzel',serif;font-size:12px;color:#e879f9;letter-spacing:1px;}
-.amar-sub{font-size:10px;color:rgba(232,121,249,0.5);letter-spacing:.5px;margin-top:1px;}
+.amar-sub{font-size:10px;color:rgba(255,0,255,0.8);letter-spacing:.5px;margin-top:1px;}
 .amar-body{padding:14px;}
 .amar-ta{width:100%;background:rgba(0,0,0,0.3);border:1px solid rgba(232,121,249,0.15);border-radius:9px;padding:11px;color:var(--text);font-family:'Lora',serif;font-size:14px;line-height:1.7;resize:none;min-height:90px;transition:border-color .22s;outline:none;}
-.amar-ta:focus{border-color:rgba(232,121,249,0.4);}
+.amar-ta:focus{border-color:rgba(255,0,255,0.75);}
 .amar-ta::placeholder{color:rgba(232,121,249,0.3);font-style:italic;}
 .amar-row{display:flex;gap:7px;margin-top:8px;}
 .amar-vinp{flex:1;background:rgba(0,0,0,0.3);border:1px solid rgba(232,121,249,0.15);border-radius:8px;padding:8px 11px;color:var(--text);font-family:'Lora',serif;font-size:13px;outline:none;transition:border-color .22s;}
-.amar-vinp:focus{border-color:rgba(232,121,249,0.4);}
+.amar-vinp:focus{border-color:rgba(255,0,255,0.75);}
 .amar-vinp::placeholder{color:rgba(232,121,249,0.3);}
-.amar-save{padding:8px 14px;background:rgba(232,121,249,0.1);border:1px solid rgba(232,121,249,0.25);border-radius:8px;color:#e879f9;font-family:'Cinzel',serif;font-size:9px;letter-spacing:1px;cursor:pointer;transition:all .2s;text-transform:uppercase;outline:none;white-space:nowrap;}
-.amar-save:hover{background:rgba(232,121,249,0.2);}
+.amar-save{padding:8px 14px;background:rgba(232,121,249,0.1);border:1px solid rgba(255,0,255,0.5);border-radius:8px;color:#e879f9;font-family:'Cinzel',serif;font-size:9px;letter-spacing:1px;cursor:pointer;transition:all .2s;text-transform:uppercase;outline:none;white-space:nowrap;}
+.amar-save:hover{background:rgba(255,0,255,0.45);}
 .amar-entries{margin-top:10px;}
 .amar-entry{background:rgba(232,121,249,0.05);border:1px solid rgba(232,121,249,0.12);border-radius:8px;padding:10px 12px;margin-bottom:6px;position:relative;}
 .amar-entry-text{font-size:13px;font-style:italic;color:var(--text);line-height:1.6;margin-bottom:4px;}
@@ -536,8 +520,8 @@ body::before{content:'';position:fixed;inset:0;
 .pmcb-done:hover{background:rgba(16,185,129,0.2);}
 .pmcb-del{background:rgba(244,63,94,0.1);border:1px solid rgba(244,63,94,0.25);color:#f43f5e;}
 .pmcb-del:hover{background:rgba(244,63,94,0.2);}
-.pmc-bar{height:2px;background:var(--deep);border-radius:2px;overflow:hidden;margin-bottom:4px;}
-.pmc-fill{height:100%;border-radius:2px;}
+.pmc-bar{height:4px;background:var(--deep);border-radius:4px;overflow:hidden;margin-bottom:4px;}
+.pmc-fill{height:100%;border-radius:4px;}
 .pmc-meta{font-size:9px;color:var(--text-3);font-family:'Cinzel',serif;display:flex;justify-content:space-between;}
 
 /* ════════════════════════════════
@@ -587,9 +571,127 @@ body::before{content:'';position:fixed;inset:0;
 .rleg-item{display:flex;align-items:center;}
 .rleg-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;box-shadow:0 0 6px currentColor;}
 
+.study-save-btn{display:block;width:100%;margin-top:12px;padding:13px;background:linear-gradient(135deg,rgba(0,245,160,0.1),rgba(0,207,255,0.08));border:1px solid rgba(0,245,160,0.35);border-radius:12px;color:#00f5a0;font-family:'Cinzel',serif;font-size:10px;letter-spacing:2px;cursor:pointer;outline:none;transition:all .2s;}
+.study-save-btn:active{transform:scale(.98);background:rgba(0,245,160,0.15);}
+.study-saved-msg{display:none;text-align:center;font-family:'Cinzel',serif;font-size:9px;color:rgba(0,245,160,0.5);letter-spacing:2px;margin-top:8px;animation:fadeIn .3s ease;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+
 /* ════════════════════════════════
-   INSTALL BANNER
+   HOME DAILY CARD
 ════════════════════════════════ */
+.hdc{background:linear-gradient(135deg,#0a0e1c,#0e0c00);border:1px solid var(--border-gold);border-radius:16px;padding:14px;margin-bottom:13px;position:relative;overflow:hidden;}
+.hdc::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(255,224,0,0.06),transparent 70%);pointer-events:none;}
+.hdc-empty{text-align:center;padding:16px 0;font-family:'Cinzel',serif;font-size:10px;color:var(--text-3);letter-spacing:1px;line-height:1.8;}
+.hdc-empty span{display:block;font-size:18px;margin-bottom:6px;}
+.hdc-edit{display:inline-block;margin-top:10px;padding:5px 14px;background:rgba(255,224,0,0.08);border:1px solid rgba(255,224,0,0.3);border-radius:20px;color:var(--gold);font-family:'Cinzel',serif;font-size:8px;letter-spacing:1.5px;cursor:pointer;}
+.hdc-row{display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px solid rgba(255,255,255,0.1);}
+.hdc-row:last-child{border-bottom:none;padding-bottom:0;}
+.hdc-ico{font-size:16px;flex-shrink:0;margin-top:1px;}
+.hdc-body{flex:1;min-width:0;}
+.hdc-type{font-family:'Cinzel',serif;font-size:7.5px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:3px;opacity:.6;}
+.hdc-text{font-size:12px;font-style:italic;line-height:1.5;color:var(--text);white-space:pre-wrap;word-break:break-word;}
+.hdc-ref{font-family:'Cinzel',serif;font-size:9px;margin-top:3px;opacity:.5;letter-spacing:.5px;}
+.hdc-footer{display:flex;align-items:center;justify-content:space-between;margin-top:10px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.1);}
+.hdc-date{font-family:'Cinzel',serif;font-size:8px;color:var(--text-3);letter-spacing:1px;}
+.hdc-edit-btn{padding:4px 12px;background:rgba(255,224,0,0.07);border:1px solid rgba(255,224,0,0.25);border-radius:20px;color:var(--gold-dim);font-family:'Cinzel',serif;font-size:8px;letter-spacing:1px;cursor:pointer;outline:none;transition:all .2s;}
+.hdc-edit-btn:active{background:rgba(255,224,0,0.15);}
+
+/* ════════════════════════════════
+   HOME DAILY CARD — inline editable
+════════════════════════════════ */
+.home-daily-card{background:linear-gradient(160deg,#0a0e1c,#0e0a00,#080e14);border:1px solid var(--border-gold);border-radius:18px;padding:14px;margin-bottom:13px;position:relative;overflow:hidden;box-shadow:0 0 24px rgba(255,196,0,0.08);}
+.home-daily-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 50% at 50% 0%,rgba(255,224,0,0.07),transparent 70%);pointer-events:none;}
+.hd-tile{padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.07);position:relative;}
+.hd-tile:last-of-type{border-bottom:none;}
+.hd-tile-hdr{display:flex;align-items:center;gap:7px;margin-bottom:7px;}
+.hd-ico{font-size:15px;line-height:1;}
+.hd-label{font-family:'Cinzel',serif;font-size:8.5px;letter-spacing:2px;text-transform:uppercase;font-weight:600;}
+.hd-ta{width:100%;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:8px 10px;color:var(--text);font-family:'Lora',serif;font-size:13px;font-style:italic;line-height:1.55;resize:none;min-height:52px;outline:none;transition:border-color .2s;margin-bottom:5px;}
+.hd-ta:focus{border-color:rgba(255,196,0,0.35);background:rgba(255,196,0,0.03);}
+.hd-ref{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,0.1);padding:4px 2px;color:var(--text-3);font-family:'Cinzel',serif;font-size:9px;letter-spacing:1px;outline:none;transition:border-color .2s;}
+.hd-ref:focus{border-bottom-color:rgba(255,196,0,0.4);color:var(--text-2);}
+.hd-save-row{display:flex;align-items:center;justify-content:space-between;margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,196,0,0.15);}
+.hd-saved-msg{font-family:'Cinzel',serif;font-size:8px;letter-spacing:2px;color:rgba(0,255,153,0.6);display:none;animation:fadeIn .3s ease;}
+.hd-save-btn{padding:8px 18px;background:linear-gradient(135deg,rgba(255,196,0,0.14),rgba(255,196,0,0.06));border:1px solid rgba(255,196,0,0.5);border-radius:20px;color:var(--gold-bright);font-family:'Cinzel',serif;font-size:9px;letter-spacing:2px;cursor:pointer;outline:none;transition:all .2s;box-shadow:0 0 12px rgba(255,196,0,0.15);}
+.hd-save-btn:active{transform:scale(.97);background:rgba(255,196,0,0.2);}
+
+/* colour accents per tile */
+.hd-tile-word .hd-ta:focus{border-color:rgba(255,224,0,0.4);background:rgba(255,224,0,0.03);}
+.hd-tile-song .hd-ta:focus{border-color:rgba(255,0,119,0.4);background:rgba(255,0,119,0.03);}
+.hd-tile-sermon .hd-ta:focus{border-color:rgba(0,204,255,0.4);background:rgba(0,204,255,0.03);}
+
+/* ════════════════════════════════
+   WEEKLY TRACKER — MULTI-STYLE
+════════════════════════════════ */
+/* Summary bar */
+.wt-bar{display:flex;align-items:center;justify-content:space-between;background:linear-gradient(135deg,#080f22,#050a14);border:1px solid var(--border-gold);border-radius:16px;padding:12px 16px;margin-bottom:8px;cursor:pointer;transition:all .25s;user-select:none;box-shadow:0 0 20px rgba(255,196,0,0.1);}
+.wt-bar:active{opacity:.8;transform:scale(.99);}
+.wt-bar-left{display:flex;align-items:center;gap:12px;}
+.wt-bar-title{font-family:'Cinzel',serif;font-size:11px;color:var(--gold);letter-spacing:1.5px;white-space:nowrap;}
+.wt-bar-dots{display:flex;gap:5px;align-items:center;}
+.wt-bar-dot{width:8px;height:8px;border-radius:50%;transition:all .3s;}
+.wt-bar-right{display:flex;align-items:center;gap:10px;}
+.wt-bar-score{font-family:'Cinzel Decorative',serif;font-size:18px;color:var(--gold-bright);line-height:1;}
+.wt-bar-score span{font-size:10px;color:var(--gold-dim);font-family:'Cinzel',serif;}
+.wt-bar-chevron{font-size:20px;color:var(--gold-dim);transition:transform .3s;line-height:1;}
+.wt-bar-chevron.open{transform:rotate(90deg);}
+
+/* Panel */
+.wt-panel{background:linear-gradient(135deg,#080d1a,#060a10);border:1px solid var(--border-gold);border-radius:16px;padding:14px;margin-bottom:13px;animation:wtSlide .25s ease;}
+@keyframes wtSlide{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+
+/* Style tabs */
+.wt-tabs{display:flex;gap:6px;margin-bottom:14px;overflow-x:auto;padding-bottom:2px;scrollbar-width:none;}
+.wt-tabs::-webkit-scrollbar{display:none;}
+.wt-tab{flex-shrink:0;padding:6px 14px;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:20px;color:var(--text-3);font-family:'Cinzel',serif;font-size:9px;letter-spacing:1px;cursor:pointer;outline:none;transition:all .2s;}
+.wt-tab.active{background:rgba(230,180,50,0.12);border-color:var(--gold-dim);color:var(--gold);}
+
+/* Views */
+.wt-view{display:none;}
+.wt-view-active{display:block;}
+
+/* ── GRID VIEW (GitHub-style) ── */
+.wtg-wrap{display:grid;grid-template-columns:auto 1fr;gap:6px;align-items:center;}
+.wtg-label{font-family:'Cinzel',serif;font-size:7.5px;letter-spacing:.5px;color:var(--text-3);white-space:nowrap;padding-right:6px;text-align:right;}
+.wtg-row{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;}
+.wtg-cell{aspect-ratio:1;border-radius:5px;cursor:pointer;transition:all .2s;border:1px solid rgba(255,255,255,0.12);}
+.wtg-cell.done{border-color:transparent;box-shadow:0 0 8px currentColor;}
+.wtg-cell.today{ring:2px;outline:2px solid rgba(255,255,255,0.3);outline-offset:1px;}
+.wtg-day-hdr{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:6px;margin-left:calc(7.5ch + 12px);}
+.wtg-day-lbl{font-family:'Cinzel',serif;font-size:7px;color:var(--text-3);text-align:center;}
+
+/* ── CARDS VIEW (7-dot rows) ── */
+.wtc-card{display:flex;align-items:center;gap:10px;padding:10px 12px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;margin-bottom:7px;cursor:default;}
+.wtc-label{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.5px;white-space:nowrap;min-width:62px;}
+.wtc-dots{display:flex;gap:6px;flex:1;}
+.wtc-dot{width:22px;height:22px;border-radius:50%;border:1.5px solid rgba(255,255,255,0.1);cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;font-size:9px;flex-shrink:0;}
+.wtc-dot.done{border-color:transparent;box-shadow:0 0 10px currentColor;}
+.wtc-dot.today-ring{outline:2px solid rgba(255,255,255,0.35);outline-offset:2px;}
+
+/* ── TILES VIEW (bold stat tiles) ── */
+.wtt-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.wtt-tile{background:rgba(255,255,255,0.03);border-radius:14px;padding:12px 14px;border:1px solid var(--border);cursor:pointer;transition:all .2s;position:relative;overflow:hidden;}
+.wtt-tile:active{transform:scale(.97);}
+.wtt-tile-glow{position:absolute;inset:0;border-radius:14px;opacity:.07;pointer-events:none;}
+.wtt-name{font-family:'Cinzel',serif;font-size:8px;letter-spacing:.5px;margin-bottom:4px;opacity:.7;}
+.wtt-num{font-family:'Cinzel Decorative',serif;font-size:26px;line-height:1;margin-bottom:4px;}
+.wtt-bar-wrap{height:3px;background:rgba(255,255,255,0.07);border-radius:2px;overflow:hidden;}
+.wtt-bar-fill{height:100%;border-radius:2px;transition:width .5s ease;}
+.wtt-days{font-family:'Cinzel',serif;font-size:7px;opacity:.4;margin-top:4px;letter-spacing:.5px;}
+
+/* ── FLAMES VIEW ── */
+.wtf-grid{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;padding:4px 0;}
+.wtf-col{display:flex;flex-direction:column;align-items:center;gap:6px;flex:1;min-width:52px;}
+.wtf-label{font-family:'Cinzel',serif;font-size:7.5px;text-align:center;opacity:.5;letter-spacing:.3px;}
+.wtf-flame-wrap{position:relative;width:44px;height:56px;cursor:pointer;}
+.wtf-flame-base{font-size:34px;line-height:1;text-align:center;filter:grayscale(1);opacity:.18;transition:all .4s;position:absolute;bottom:0;left:50%;transform:translateX(-50%);}
+.wtf-flame-base.lit{filter:grayscale(0);opacity:1;}
+.wtf-flame-glow{position:absolute;bottom:-4px;left:50%;transform:translateX(-50%);width:28px;height:28px;border-radius:50%;opacity:0;transition:opacity .4s;}
+.wtf-flame-base.lit + .wtf-flame-glow{opacity:.35;}
+.wtf-count{font-family:'Cinzel Decorative',serif;font-size:13px;line-height:1;}
+.wtf-sub{font-size:7px;font-family:'Cinzel',serif;opacity:.35;letter-spacing:.5px;}
+
+::-webkit-scrollbar{width:3px;}
 .install-banner{position:fixed;bottom:80px;left:12px;right:12px;background:linear-gradient(135deg,#0e0b00,#1a1200);border:1px solid var(--gold-dim);border-radius:16px;padding:13px 15px;display:flex;align-items:center;gap:11px;z-index:200;box-shadow:0 8px 32px rgba(0,0,0,0.6),var(--glow);animation:slideUp .4s ease;}
 @keyframes slideUp{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
 .ib-icon{font-size:26px;flex-shrink:0;}
@@ -598,7 +700,7 @@ body::before{content:'';position:fixed;inset:0;
 .ib-sub{font-size:10px;color:var(--text-3);}
 .ib-btn{padding:7px 14px;background:linear-gradient(135deg,#2e1e00,#1a1200);border:1px solid var(--gold);border-radius:9px;color:var(--gold-bright);font-family:'Cinzel',serif;font-size:9px;letter-spacing:1px;cursor:pointer;outline:none;white-space:nowrap;transition:all .2s;}
 .ib-btn:hover{background:linear-gradient(135deg,#3e2a00,#2a1800);box-shadow:var(--glow);}
-.ib-close{width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,0.05);border:1px solid var(--border);color:var(--text-3);font-size:14px;cursor:pointer;outline:none;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.ib-close{width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,0.1);border:1px solid var(--border);color:var(--text-3);font-size:14px;cursor:pointer;outline:none;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 
 ::-webkit-scrollbar{width:3px;}
 ::-webkit-scrollbar-track{background:transparent;}
@@ -651,20 +753,19 @@ body::before{content:'';position:fixed;inset:0;
         </div>
       </div>
 
-      <!-- ══ WEEKLY RINGS ══ -->
-      <div class="rings-card">
-        <div class="rings-hdr">
-          <div class="rings-title">⬤ Weekly Tracker</div>
-          <div class="rings-sub">5 rings · 7 days</div>
+      <!-- ══ WEEKLY TRACKER ══ -->
+      <div class="wt-bar" id="wtBar" onclick="toggleTracker()">
+        <div class="wt-bar-left">
+          <div class="wt-bar-title">Weekly Tracker</div>
+          <div class="wt-bar-dots" id="wtBarDots"></div>
         </div>
-        <div class="rings-wrap" id="weekRingsCanvas"></div>
-        <div class="rings-legend">
-          <div class="rleg-item"><span class="rleg-dot" style="background:#e6b432"></span></div>
-          <div class="rleg-item"><span class="rleg-dot" style="background:#aa00ff"></span></div>
-          <div class="rleg-item"><span class="rleg-dot" style="background:#00e676"></span></div>
-          <div class="rleg-item"><span class="rleg-dot" style="background:#00cfff"></span></div>
-          <div class="rleg-item"><span class="rleg-dot" style="background:#ff3a3a"></span></div>
+        <div class="wt-bar-right">
+          <div class="wt-bar-score" id="wtBarScore">0<span>/35</span></div>
+          <div class="wt-bar-chevron" id="wtChevron">›</div>
         </div>
+      </div>
+      <div class="wt-panel" id="wtPanel" style="display:none">
+        <div id="wt-flames" class="wt-view wt-view-active"></div>
       </div>
 
       <div class="dash-full">
@@ -684,11 +785,46 @@ body::before{content:'';position:fixed;inset:0;
       <div class="prayer-grid" id="prayerGrid"></div>
       <div style="font-size:9px;color:var(--text-3);text-align:center;margin-bottom:14px;font-family:'Cinzel',serif;letter-spacing:.5px;font-style:italic">Tap a bell to open your prayer for that hour</div>
 
-      <div class="sec-lbl sl-today">📊 Plan Progress</div>
-      <div class="dash-grid" id="dashGrid"></div>
-
       <div class="sec-lbl sl-today">Active Plans</div>
       <div id="activePlansList"></div>
+
+      <!-- Daily Word · Song · Sermon on Home — INLINE EDITABLE -->
+      <div class="sec-lbl" style="color:#ffe000;">🌅 Today's Daily</div>
+      <div class="home-daily-card" id="homeDailyCard">
+        <!-- Word -->
+        <div class="hd-tile hd-tile-word">
+          <div class="hd-tile-hdr">
+            <span class="hd-ico">✝️</span>
+            <span class="hd-label" style="color:var(--c-word)">Word for the Day</span>
+          </div>
+          <textarea class="hd-ta" id="hd-wordTa" placeholder="Write your Word / key scripture for today…" oninput="syncHomeDaily()"></textarea>
+          <input class="hd-ref" id="hd-wordRef" placeholder="Reference e.g. Isaiah 41:10" oninput="syncHomeDaily()">
+        </div>
+        <!-- Song -->
+        <div class="hd-tile hd-tile-song">
+          <div class="hd-tile-hdr">
+            <span class="hd-ico">🎵</span>
+            <span class="hd-label" style="color:var(--c-song)">Song for the Day</span>
+          </div>
+          <textarea class="hd-ta" id="hd-songTa" placeholder="Song title, artist, or key lines…" oninput="syncHomeDaily()"></textarea>
+          <input class="hd-ref" id="hd-songRef" placeholder="Artist / Album" oninput="syncHomeDaily()">
+        </div>
+        <!-- Sermon -->
+        <div class="hd-tile hd-tile-sermon">
+          <div class="hd-tile-hdr">
+            <span class="hd-ico">🎙️</span>
+            <span class="hd-label" style="color:var(--c-sermon)">Sermon for the Day</span>
+          </div>
+          <textarea class="hd-ta" id="hd-sermonTa" placeholder="Sermon title, preacher, or key takeaway…" oninput="syncHomeDaily()"></textarea>
+          <input class="hd-ref" id="hd-sermonRef" placeholder="Preacher / Source" oninput="syncHomeDaily()">
+        </div>
+        <!-- Save row -->
+        <div class="hd-save-row">
+          <div class="hd-saved-msg" id="hd-saved">✓ Locked in</div>
+          <button class="hd-save-btn" onclick="saveHomeDailyTrio()">🔒 Lock In</button>
+        </div>
+      </div>
+
       <button class="btn-ghost" onclick="goTo('plans')">✦ Browse &amp; Manage Plans</button>
     </div>
 
@@ -721,7 +857,7 @@ body::before{content:'';position:fixed;inset:0;
         <div id="soap-s" class="step-panel active"><div class="sp-ttl" style="color:var(--c-soap-s)">Scripture</div><div class="sp-hint">Write the verse that speaks to you — it becomes your study verse</div><textarea class="sp-ta" id="ta-soap-s" placeholder="Copy the verse here…" oninput="updateSV()"></textarea><input class="finp" id="svRef" placeholder="Reference e.g. Daniel 1:8" style="margin-top:7px;font-size:12px" oninput="updateSV()"><div class="sv-preview" id="svPrev" style="display:none"><div class="sv-label">✦ Today's Study Verse</div><div class="sv-text" id="svTxt"></div><div class="sv-ref" id="svR"></div></div></div>
         <div id="soap-o" class="step-panel"><div class="sp-ttl" style="color:var(--c-soap-o)">Observation</div><div class="sp-hint">What do you see? Context, key words, repeated phrases, who is speaking…</div><textarea class="sp-ta" id="ta-soap-o" placeholder="What stands out in this passage?"></textarea></div>
         <div id="soap-a" class="step-panel"><div class="sp-ttl" style="color:var(--c-soap-a)">Application</div><div class="sp-hint">How does this truth apply to your life today? Be personal and specific.</div><textarea class="sp-ta" id="ta-soap-a" placeholder="How can I live this out today?"></textarea></div>
-        <div id="soap-p" class="step-panel"><div class="sp-ttl" style="color:var(--c-soap-p)">Prayer</div><div class="sp-hint">Respond to God in prayer — confession, gratitude, petition, surrender…</div><textarea class="sp-ta" id="ta-soap-p" placeholder="Father…"></textarea></div>
+        <div id="soap-p" class="step-panel"><div class="sp-ttl" style="color:var(--c-soap-p)">Prayer</div><div class="sp-hint">Respond to God in prayer — confession, gratitude, petition, surrender…</div><textarea class="sp-ta" id="ta-soap-p" placeholder="Father…"></textarea><button class="study-save-btn" onclick="saveStudyNotes('soap')">🔒 Save &amp; Lock Study</button><div class="study-saved-msg" id="saved-soap">✓ Saved</div></div>
       </div>
 
       <!-- STAR -->
@@ -736,7 +872,7 @@ body::before{content:'';position:fixed;inset:0;
         <div id="star-s" class="step-panel active"><div class="sp-ttl" style="color:var(--c-star-s)">Situation</div><div class="sp-hint">What is happening? Who, what, when, where — set the scene.</div><textarea class="sp-ta" id="ta-star-s" placeholder="Describe the situation…"></textarea></div>
         <div id="star-t" class="step-panel"><div class="sp-ttl" style="color:var(--c-star-t)">Theme</div><div class="sp-hint">What is the main theme or truth God is revealing here?</div><textarea class="sp-ta" id="ta-star-t" placeholder="The central theme is…"></textarea></div>
         <div id="star-a" class="step-panel"><div class="sp-ttl" style="color:var(--c-star-a)">Apply</div><div class="sp-hint">How does this theme apply to your life? What needs to change?</div><textarea class="sp-ta" id="ta-star-a" placeholder="I will apply this by…"></textarea></div>
-        <div id="star-r" class="step-panel"><div class="sp-ttl" style="color:var(--c-star-r)">Respond</div><div class="sp-hint">Write your prayer, commitment, or declaration in response.</div><textarea class="sp-ta" id="ta-star-r" placeholder="Lord, I respond by…"></textarea></div>
+        <div id="star-r" class="step-panel"><div class="sp-ttl" style="color:var(--c-star-r)">Respond</div><div class="sp-hint">Write your prayer, commitment, or declaration in response.</div><textarea class="sp-ta" id="ta-star-r" placeholder="Lord, I respond by…"></textarea><button class="study-save-btn" onclick="saveStudyNotes('star')">🔒 Save &amp; Lock Study</button><div class="study-saved-msg" id="saved-star">✓ Saved</div></div>
       </div>
 
       <!-- OIA -->
@@ -749,7 +885,7 @@ body::before{content:'';position:fixed;inset:0;
         </div>
         <div id="oia-o" class="step-panel active"><div class="sp-ttl" style="color:var(--c-oia-o)">Observe</div><div class="sp-hint">What does the text say? Facts only — no interpretation yet.</div><textarea class="sp-ta" id="ta-oia-o" placeholder="I observe that…"></textarea></div>
         <div id="oia-i" class="step-panel"><div class="sp-ttl" style="color:var(--c-oia-i)">Interpret</div><div class="sp-hint">What does it mean? What timeless principle does it teach?</div><textarea class="sp-ta" id="ta-oia-i" placeholder="This means that…"></textarea></div>
-        <div id="oia-a" class="step-panel"><div class="sp-ttl" style="color:var(--c-oia-a)">Apply</div><div class="sp-hint">How will you respond to this truth specifically and personally?</div><textarea class="sp-ta" id="ta-oia-a" placeholder="Because of this I will…"></textarea></div>
+        <div id="oia-a" class="step-panel"><div class="sp-ttl" style="color:var(--c-oia-a)">Apply</div><div class="sp-hint">How will you respond to this truth specifically and personally?</div><textarea class="sp-ta" id="ta-oia-a" placeholder="Because of this I will…"></textarea><button class="study-save-btn" onclick="saveStudyNotes('oia')">🔒 Save &amp; Lock Study</button><div class="study-saved-msg" id="saved-oia">✓ Saved</div></div>
       </div>
 
       <!-- REAP -->
@@ -764,7 +900,7 @@ body::before{content:'';position:fixed;inset:0;
         <div id="reap-r" class="step-panel active"><div class="sp-ttl" style="color:var(--c-reap-r)">Read</div><div class="sp-hint">Read slowly. Summarize the passage in your own words.</div><textarea class="sp-ta" id="ta-reap-r" placeholder="In this passage…"></textarea></div>
         <div id="reap-e" class="step-panel"><div class="sp-ttl" style="color:var(--c-reap-e)">Examine</div><div class="sp-hint">Dig deeper — cross-references, word meanings, historical context.</div><textarea class="sp-ta" id="ta-reap-e" placeholder="On closer examination…"></textarea></div>
         <div id="reap-a" class="step-panel"><div class="sp-ttl" style="color:var(--c-reap-a)">Apply</div><div class="sp-hint">How does this speak to your current season? Write a specific application.</div><textarea class="sp-ta" id="ta-reap-a" placeholder="I will apply this by…"></textarea></div>
-        <div id="reap-p" class="step-panel"><div class="sp-ttl" style="color:var(--c-reap-p)">Pray</div><div class="sp-hint">Write a prayer responding to what you studied.</div><textarea class="sp-ta" id="ta-reap-p" placeholder="Father, in light of this…"></textarea></div>
+        <div id="reap-p" class="step-panel"><div class="sp-ttl" style="color:var(--c-reap-p)">Pray</div><div class="sp-hint">Write a prayer responding to what you studied.</div><textarea class="sp-ta" id="ta-reap-p" placeholder="Father, in light of this…"></textarea><button class="study-save-btn" onclick="saveStudyNotes('reap')">🔒 Save &amp; Lock Study</button><div class="study-saved-msg" id="saved-reap">✓ Saved</div></div>
       </div>
 
       <!-- 5 R's -->
@@ -781,7 +917,7 @@ body::before{content:'';position:fixed;inset:0;
         <div id="5r-r2" class="step-panel"><div class="sp-ttl" style="color:var(--c-5r-r2)">Research</div><div class="sp-hint">Historical context, word definitions, cross-references. What background helps?</div><textarea class="sp-ta" id="ta-5r-r2" placeholder="Background shows…"></textarea></div>
         <div id="5r-r3" class="step-panel"><div class="sp-ttl" style="color:var(--c-5r-r3)">Reveal</div><div class="sp-hint">What is God personally revealing to you through this passage?</div><textarea class="sp-ta" id="ta-5r-r3" placeholder="God is revealing…"></textarea></div>
         <div id="5r-r4" class="step-panel"><div class="sp-ttl" style="color:var(--c-5r-r4)">Respond</div><div class="sp-hint">Write your prayer and commitment in response.</div><textarea class="sp-ta" id="ta-5r-r4" placeholder="Lord, I respond…"></textarea></div>
-        <div id="5r-r5" class="step-panel"><div class="sp-ttl" style="color:var(--c-5r-r5)">Remember</div><div class="sp-hint">One key verse or phrase to carry with you today.</div><textarea class="sp-ta" id="ta-5r-r5" placeholder="I will remember…"></textarea></div>
+        <div id="5r-r5" class="step-panel"><div class="sp-ttl" style="color:var(--c-5r-r5)">Remember</div><div class="sp-hint">One key verse or phrase to carry with you today.</div><textarea class="sp-ta" id="ta-5r-r5" placeholder="I will remember…"></textarea><button class="study-save-btn" onclick="saveStudyNotes('5r')">🔒 Save &amp; Lock Study</button><div class="study-saved-msg" id="saved-5r">✓ Saved</div></div>
       </div>
 
       <!-- Amar HaAv -->
@@ -943,6 +1079,13 @@ body::before{content:'';position:fixed;inset:0;
             </div>
           </div>
         </div>
+        <button class="zk-save-btn" style="margin-top:14px;background:rgba(253,230,138,0.1);border-color:rgba(253,230,138,0.35);color:#ffe566;" onclick="saveDailyTrio()">🌅 Lock In — Daily Word · Song · Sermon</button>
+        <div id="dailyTrioSaved" style="display:none;margin-top:10px;text-align:center;font-family:'Cinzel',serif;font-size:10px;color:rgba(253,230,138,0.5);letter-spacing:1px;">✓ Saved for today</div>
+        <!-- Daily history log -->
+        <div id="dailyHistSection" style="display:none;margin-top:14px;border-top:1px solid var(--border);padding-top:12px;">
+          <div style="font-family:'Cinzel',serif;font-size:8px;color:rgba(253,230,138,0.35);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Previous Days</div>
+          <div id="dailyHistList"></div>
+        </div>
       </div>
 
     </div>
@@ -1007,28 +1150,50 @@ body::before{content:'';position:fixed;inset:0;
   </div>
 </div>
 
+<!-- RING HISTORY MODAL -->
+<div class="mo" id="moRingHist">
+  <div class="mo-box" style="max-height:70vh;overflow-y:auto;">
+    <div class="mo-handle"></div>
+    <div id="rhTitle" style="font-family:'Cinzel',serif;font-size:13px;letter-spacing:1.5px;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border);"></div>
+    <div id="rhBody"></div>
+    <button class="btn-ghost" onclick="closeMo()" style="margin-top:14px">Close</button>
+  </div>
+</div>
+
+<!-- CONFIRM DELETE MODAL -->
+<div class="mo" id="moConfirmDel">
+  <div class="mo-box">
+    <div class="mo-handle"></div>
+    <div style="font-family:'Cinzel',serif;font-size:13px;color:#ff3a3a;letter-spacing:1px;margin-bottom:8px;text-align:center;">Remove Plan</div>
+    <div id="confirmDelName" style="font-size:12px;color:var(--text-2);text-align:center;margin-bottom:18px;font-style:italic;"></div>
+    <div style="font-size:11px;color:var(--text-3);text-align:center;margin-bottom:20px;">This will remove the plan and all its progress. This cannot be undone.</div>
+    <button id="confirmDelBtn" style="width:100%;padding:13px;background:rgba(255,58,58,0.12);border:1px solid rgba(255,58,58,0.4);border-radius:12px;color:#ff3a3a;font-family:'Cinzel',serif;font-size:11px;letter-spacing:2px;cursor:pointer;outline:none;margin-bottom:8px;">Remove Plan</button>
+    <button class="btn-ghost" onclick="closeMo()" style="margin-top:0">Cancel</button>
+  </div>
+</div>
+
 <script>
 // ═══════════════════════════════════════
 //  CONSTANTS
 // ═══════════════════════════════════════
 const COLORS=[
-  {cls:'pc-gold',   hex:'#e6b432',dc:'dc-gold'},
-  {cls:'pc-violet', hex:'#aa00ff',dc:'dc-violet'},
-  {cls:'pc-emerald',hex:'#00e676',dc:'dc-emerald'},
-  {cls:'pc-sapphire',hex:'#3b82f6',dc:'dc-sapphire'},
-  {cls:'pc-rose',   hex:'#f43f5e',dc:'dc-rose'},
-  {cls:'pc-teal',   hex:'#14b8a6',dc:'dc-teal'},
-  {cls:'pc-orange', hex:'#f97316',dc:'dc-orange'},
+  {cls:'pc-gold',   hex:'#ffc400',dc:'dc-gold'},
+  {cls:'pc-violet', hex:'#cc00ff',dc:'dc-violet'},
+  {cls:'pc-emerald',hex:'#00ff66',dc:'dc-emerald'},
+  {cls:'pc-sapphire',hex:'#0088ff',dc:'dc-sapphire'},
+  {cls:'pc-rose',   hex:'#ff0044',dc:'dc-rose'},
+  {cls:'pc-teal',   hex:'#00eeff',dc:'dc-teal'},
+  {cls:'pc-orange', hex:'#ff6600',dc:'dc-orange'},
 ];
 const CHX={},DCX={};
 COLORS.forEach(c=>{CHX[c.cls]=c.hex;DCX[c.cls]=c.dc;});
 
 const PRAYER=[
-  {id:'p9',   cls:'pr-9a',  lbl:'9 AM',  bell:'🔔', verse:'"Morning by morning he wakens — wakens my ear to listen."',          ref:'Isaiah 50:4',   prompt:'Offer your morning to the Lord. Ask Him to order your steps today.',  col:'#fde68a'},
-  {id:'p12',  cls:'pr-12p', lbl:'12 PM', bell:'🔔', verse:'"At noon I will pray, and cry aloud, and He shall hear my voice."',  ref:'Psalm 55:17',   prompt:'Pause at midday. Lay the afternoon into His hands.',                col:'#86efac'},
-  {id:'p3',   cls:'pr-3p',  lbl:'3 PM',  bell:'🔔', verse:'"…the hour of prayer, the ninth hour."',                            ref:'Acts 3:1',      prompt:'The hour of the cross. Intercede for someone who needs His mercy.',  col:'#93c5fd'},
-  {id:'p6',   cls:'pr-6p',  lbl:'6 PM',  bell:'🔔', verse:'"Evening and morning and at noon I will pray."',                    ref:'Psalm 55:17',   prompt:'Give thanks for the day\'s grace. Rest in His faithfulness.',        col:'#f9a8d4'},
-  {id:'p9pm', cls:'pr-9pm', lbl:'9 PM',  bell:'🌙', verse:'"He grants sleep to those He loves."',                              ref:'Psalm 127:2',   prompt:'End the day in gratitude. Surrender every burden at His feet.',      col:'#c4b5fd'},
+  {id:'p9',   cls:'pr-9a',  lbl:'9 AM',  bell:'🔔', verse:'"Morning by morning he wakens — wakens my ear to listen."',          ref:'Isaiah 50:4',   prompt:'Offer your morning to the Lord. Ask Him to order your steps today.',  col:'#ffe000'},
+  {id:'p12',  cls:'pr-12p', lbl:'12 PM', bell:'🔔', verse:'"At noon I will pray, and cry aloud, and He shall hear my voice."',  ref:'Psalm 55:17',   prompt:'Pause at midday. Lay the afternoon into His hands.',                col:'#00ff99'},
+  {id:'p3',   cls:'pr-3p',  lbl:'3 PM',  bell:'🔔', verse:'"…the hour of prayer, the ninth hour."',                            ref:'Acts 3:1',      prompt:'The hour of the cross. Intercede for someone who needs His mercy.',  col:'#00ddff'},
+  {id:'p6',   cls:'pr-6p',  lbl:'6 PM',  bell:'🔔', verse:'"Evening and morning and at noon I will pray."',                    ref:'Psalm 55:17',   prompt:'Give thanks for the day\'s grace. Rest in His faithfulness.',        col:'#ff0077'},
+  {id:'p9pm', cls:'pr-9pm', lbl:'9 PM',  bell:'🌙', verse:'"He grants sleep to those He loves."',                              ref:'Psalm 127:2',   prompt:'End the day in gratitude. Surrender every burden at His feet.',      col:'#cc00ff'},
 ];
 
 const PRESETS=[
@@ -1042,11 +1207,14 @@ const PRESETS=[
 // ═══════════════════════════════════════
 let S={
   selPlanId:1, selColor:'pc-gold', selMethod:'soap',
+  planMethods:{}, // per-plan study method keyed by plan id
+  dailyEntries:[], // [{date, word, wordRef, song, songRef, sermon, sermonRef}]
+  studyData:{}, // {planId_method: {field:value, savedAt:date}}
   todayDone:false, notes:0, bestStreak:31,
   weekHistory:[false,false,false,false,false,false,false],
   // Weekly ring tracking — 7 days, 5 trackers per day
   // trackers: plan1 (gold), plan2 (violet), plan3 (emerald), study (blue), zikaron (crimson)
-  weekRings:[0,1,2,3,4,5,6].map(()=>({plan1:false,plan2:false,plan3:false,study:false,zikaron:false})),
+  weekRings:[0,1,2,3,4,5,6].map(()=>({plan1:false,plan2:false,plan3:false,plan4:false,plan5:false,study:false,zikaron:false})),
   prayerDone:{}, activePrayer:null,
   subjects:[], amarEntries:[],
   // Zikaron — Word of the Year + Word of the Month
@@ -1064,23 +1232,31 @@ let S={
 const totalDays=()=>S.plans.reduce((a,p)=>a+p.doneDays.length,0);
 const streakN=()=>(S.plans.find(p=>p.id===1)?.doneDays.length)||0;
 
+// Seed planMethods for any plan that doesn't have one yet
+function ensurePlanMethods(){
+  S.plans.forEach(p=>{ if(!S.planMethods[p.id]) S.planMethods[p.id]='soap'; });
+}
+
 // ═══════════════════════════════════════
 //  INIT
 // ═══════════════════════════════════════
 function init(){
+  ensurePlanMethods();
   const now=new Date();
   document.getElementById('todayDate').textContent=now.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
   const hr=now.getHours();
   document.getElementById('todaySal').textContent=(hr<12?'Good morning':hr<17?'Good afternoon':'Good evening')+', beloved.';
   renderAll();
+  loadAllStudyNotes();
 }
 
 function renderAll(){
-  syncHdr();renderWeek();renderWeekRings();renderPrayer();renderDashGrid();
+  syncHdr();renderWeek();renderWeekRings();renderPrayer();
   renderActivePlans();renderStudyPills();
   renderSubjects();renderAmarEntries();
-  renderZikaron();renderPathCards();renderHeatmap();
+  renderZikaron();renderDailyTrio();renderPathCards();renderHeatmap();
   renderPresetList();renderMyPlans();renderColorRow();
+  renderHomeDailyCard();
 }
 
 // ═══════════════════════════════════════
@@ -1124,84 +1300,217 @@ function renderWeek(){
 }
 
 // ═══════════════════════════════════════
-//  WEEKLY RINGS
+//  WEEKLY TRACKER — MULTI-STYLE
 // ═══════════════════════════════════════
-function renderWeekRings(){
-  const el=document.getElementById('weekRingsCanvas');
-  if(!el)return;
+let _trackerOpen=false;
+let _trackerView='grid';
+
+// Build tracker data from S.plans + fixed study/zikaron
+function getTrackerRows(){
+  const planColors=['#e6b432','#aa00ff','#00e676','#ff9900','#ff66cc'];
+  const ringKeys=['plan1','plan2','plan3','plan4','plan5'];
+  const activePlans=S.plans.filter(p=>p.active&&!p.completed).slice(0,3);
+  return [
+    ...activePlans.map((p,i)=>({
+      key:ringKeys[i], color:planColors[i],
+      label:p.name.split(' ').slice(0,2).join(' '),
+      nav:'journey'
+    })),
+    {key:'study',  color:'#00cfff', label:'Study',   nav:'study'},
+    {key:'zikaron',color:'#ff3a3a', label:'Zikaron',  nav:'zikaron'},
+  ];
+}
+
+function totalDone(){
+  return S.weekRings.reduce((a,d)=>a+Object.values(d).filter(Boolean).length,0);
+}
+
+function toggleTracker(){
+  _trackerOpen=!_trackerOpen;
+  document.getElementById('wtPanel').style.display=_trackerOpen?'block':'none';
+  const chev=document.getElementById('wtChevron');
+  if(chev) chev.classList.toggle('open',_trackerOpen);
+  if(_trackerOpen) renderWTFlames();
+}
+
+function setTrackerView(v,btn){
+  _trackerView=v;
+  document.querySelectorAll('.wt-tab').forEach(t=>t.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  document.querySelectorAll('.wt-view').forEach(el=>el.classList.remove('wt-view-active'));
+  const vEl=document.getElementById('wt-'+v);
+  if(vEl) vEl.classList.add('wt-view-active');
+  renderTrackerView(v);
+}
+
+function renderTrackerView(v){
+  const fns={grid:renderWTGrid,cards:renderWTCards,tiles:renderWTTiles,flames:renderWTFlames};
+  if(fns[v]) fns[v]();
+}
+
+function renderWeekTracker(){
+  const rows=getTrackerRows();
   const dow=new Date().getDay();
   const days=['Su','Mo','Tu','We','Th','Fr','Sa'];
-  const rings=[
-    {key:'plan1',  color:'#e6b432' },
-    {key:'plan2',  color:'#aa00ff' },
-    {key:'plan3',  color:'#00e676' },
-    {key:'study',  color:'#00cfff' },
-    {key:'zikaron',color:'#ff3a3a' },
-  ];
-  const S2=320, cx=S2/2, cy=S2/2;
-  const baseR=cx-22, ringGap=14, segGap=4;
-  const toRad=d=>d*Math.PI/180;
-  let svg='';
+  const done=totalDone();
+  const maxPossible=rows.length*7;
 
-  // Outer day labels
-  const lblR=baseR+17;
-  days.forEach((day,di)=>{
-    const isToday=di===dow;
-    const midDeg=-90+(di*(360/7))+(360/7-segGap)/2;
-    const lx=cx+lblR*Math.cos(toRad(midDeg));
-    const ly=cy+lblR*Math.sin(toRad(midDeg));
-    svg+=`<text x="${lx.toFixed(1)}" y="${ly.toFixed(1)}" font-family="Cinzel,serif"
-      font-size="${isToday?9.5:8}" fill="${isToday?'#f0cc7a':'rgba(255,255,255,0.22)'}"
-      font-weight="${isToday?700:400}" text-anchor="middle" dominant-baseline="middle">${day}</text>`;
-  });
+  // Update summary bar
+  const scoreEl=document.getElementById('wtBarScore');
+  if(scoreEl) scoreEl.innerHTML=done+'<span>/'+maxPossible+'</span>';
 
-  // 5 concentric rings
-  rings.forEach((ring,ri)=>{
-    const r=baseR-(ri*ringGap), sw=10;
-    days.forEach((day,di)=>{
-      const isDone=S.weekRings[di][ring.key];
-      const isToday=di===dow;
-      const segDeg=360/7-segGap;
-      const startDeg=-90+(di*(360/7));
-      const endDeg=startDeg+segDeg;
-      const x1=cx+r*Math.cos(toRad(startDeg)), y1=cy+r*Math.sin(toRad(startDeg));
-      const x2=cx+r*Math.cos(toRad(endDeg)),   y2=cy+r*Math.sin(toRad(endDeg));
-      // Empty track
-      svg+=`<path d="M ${x1.toFixed(2)} ${y1.toFixed(2)} A ${r} ${r} 0 0 1 ${x2.toFixed(2)} ${y2.toFixed(2)}"
-        fill="none" stroke="${isDone?ring.color:'rgba(255,255,255,0.06)'}"
-        stroke-width="${sw}" stroke-linecap="round"/>`;
-      // Glow on done
-      if(isDone) svg+=`<path d="M ${x1.toFixed(2)} ${y1.toFixed(2)} A ${r} ${r} 0 0 1 ${x2.toFixed(2)} ${y2.toFixed(2)}"
-        fill="none" stroke="${ring.color}" stroke-width="${sw+5}" stroke-linecap="round" opacity="0.15"/>`;
-      // Today dot
-      if(isToday){
-        const mid=startDeg+segDeg/2;
-        const mx=cx+r*Math.cos(toRad(mid)), my=cy+r*Math.sin(toRad(mid));
-        svg+=`<circle cx="${mx.toFixed(2)}" cy="${my.toFixed(2)}" r="5"
-          fill="${isDone?ring.color:'rgba(255,255,255,0.2)'}" stroke="rgba(0,0,0,0.5)" stroke-width="1.5"/>`;
-        if(isDone) svg+=`<circle cx="${mx.toFixed(2)}" cy="${my.toFixed(2)}" r="8"
-          fill="none" stroke="${ring.color}" stroke-width="1" opacity="0.35"/>`;
-      }
-    });
-    // (no text label inside rings — color is the identifier)
-  });
+  // Summary dots — one dot per tracker, lit if ANY day done this week
+  const dotsEl=document.getElementById('wtBarDots');
+  if(dotsEl){
+    dotsEl.innerHTML=rows.map(r=>{
+      const anyDone=S.weekRings.some(d=>d[r.key]);
+      return`<div class="wt-bar-dot" style="background:${anyDone?r.color:'rgba(255,255,255,0.1)'};${anyDone?'box-shadow:0 0 6px '+r.color:''}"></div>`;
+    }).join('');
+  }
 
-  // Centre stats
-  const done=S.weekRings.reduce((a,d)=>a+Object.values(d).filter(Boolean).length,0);
-  svg+=`
-    <text x="${cx}" y="${cy-14}" font-family="Cinzel Decorative,serif" font-size="30"
-      fill="#f0cc7a" text-anchor="middle" dominant-baseline="middle"
-      filter="url(#rg)">${done}</text>
-    <text x="${cx}" y="${cy+13}" font-family="Cinzel,serif" font-size="7"
-      fill="rgba(201,168,76,0.4)" text-anchor="middle" letter-spacing="2">OF 35 · WEEK</text>`;
-
-  const defs=`<defs><filter id="rg" x="-60%" y="-60%" width="220%" height="220%">
-    <feGaussianBlur stdDeviation="4" result="b"/>
-    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-  </filter></defs>`;
-
-  el.innerHTML=`<svg viewBox="0 0 ${S2} ${S2}" xmlns="http://www.w3.org/2000/svg">${defs}${svg}</svg>`;
+  if(_trackerOpen) renderTrackerView(_trackerView);
 }
+
+// Keep old name for renderAll compatibility
+function renderWeekRings(){ renderWeekTracker(); }
+
+// ── GRID VIEW ──
+function renderWTGrid(){
+  const el=document.getElementById('wt-grid'); if(!el)return;
+  const rows=getTrackerRows();
+  const dow=new Date().getDay();
+  const days=['Su','Mo','Tu','We','Th','Fr','Sa'];
+  let h=`<div class="wtg-day-hdr">${days.map((d,i)=>`<div class="wtg-day-lbl" style="${i===dow?'color:var(--gold-bright);font-weight:700':''}">${d}</div>`).join('')}</div>`;
+  h+=`<div class="wtg-wrap">`;
+  rows.forEach(r=>{
+    h+=`<div class="wtg-label" style="color:${r.color}">${r.label}</div>`;
+    h+=`<div class="wtg-row">`;
+    days.forEach((d,di)=>{
+      const done=S.weekRings[di][r.key];
+      const isToday=di===dow;
+      h+=`<div class="wtg-cell${done?' done':''}${isToday?' today':''}"
+        style="background:${done?r.color+'33':'rgba(255,255,255,0.04)'};${done?'color:'+r.color:''}"
+        onclick="toggleRingCell('${r.key}','${r.label}','${r.color}',${di},'${r.nav}')"></div>`;
+    });
+    h+=`</div>`;
+  });
+  h+=`</div>`;
+  el.innerHTML=h;
+}
+
+// ── CARDS VIEW ──
+function renderWTCards(){
+  const el=document.getElementById('wt-cards'); if(!el)return;
+  const rows=getTrackerRows();
+  const dow=new Date().getDay();
+  const days=['Su','Mo','Tu','We','Th','Fr','Sa'];
+  el.innerHTML=rows.map(r=>`
+    <div class="wtc-card" style="border-color:${r.color}22">
+      <div class="wtc-label" style="color:${r.color}">${r.label}</div>
+      <div class="wtc-dots">
+        ${days.map((d,di)=>{
+          const done=S.weekRings[di][r.key];
+          const isToday=di===dow;
+          return`<div class="wtc-dot${done?' done':''}${isToday?' today-ring':''}"
+            style="background:${done?r.color+'44':'rgba(255,255,255,0.04)'};${done?'box-shadow:0 0 8px '+r.color+';border-color:'+r.color:''};"
+            onclick="toggleRingCell('${r.key}','${r.label}','${r.color}',${di},'${r.nav}')"
+            title="${d}">${done?'✓':''}</div>`;
+        }).join('')}
+      </div>
+    </div>`).join('');
+}
+
+// ── TILES VIEW ──
+function renderWTTiles(){
+  const el=document.getElementById('wt-tiles'); if(!el)return;
+  const rows=getTrackerRows();
+  el.innerHTML=`<div class="wtt-grid">${rows.map(r=>{
+    const cnt=S.weekRings.filter(d=>d[r.key]).length;
+    const pct=Math.round((cnt/7)*100);
+    return`<div class="wtt-tile" onclick="goTo('${r.nav}')">
+      <div class="wtt-tile-glow" style="background:${r.color}"></div>
+      <div class="wtt-name" style="color:${r.color}">${r.label}</div>
+      <div class="wtt-num" style="color:${r.color}">${cnt}</div>
+      <div class="wtt-bar-wrap"><div class="wtt-bar-fill" style="width:${pct}%;background:${r.color}"></div></div>
+      <div class="wtt-days">${cnt}/7 days</div>
+    </div>`;
+  }).join('')}</div>`;
+}
+
+// ── FLAMES VIEW ──
+function renderWTFlames(){
+  const el=document.getElementById('wt-flames'); if(!el)return;
+  const rows=getTrackerRows();
+  el.innerHTML=`<div class="wtf-grid">${rows.map(r=>{
+    const cnt=S.weekRings.filter(d=>d[r.key]).length;
+    const lit=cnt>0;
+    const size=Math.max(24,34+(cnt*3)); // flame grows with completions
+    return`<div class="wtf-col" onclick="goTo('${r.nav}')">
+      <div class="wtf-flame-wrap" style="height:${size+22}px;width:${size}px">
+        <div class="wtf-flame-base${lit?' lit':''}" style="font-size:${size}px;filter:${lit?'drop-shadow(0 0 8px '+r.color+')':'grayscale(1)'}">${lit?'🔥':'🕯️'}</div>
+        ${lit?`<div class="wtf-flame-glow" style="background:${r.color};width:${size}px;height:${size}px"></div>`:''}
+      </div>
+      <div class="wtf-count" style="color:${r.color}">${cnt}</div>
+      <div class="wtf-sub">${r.label}</div>
+    </div>`;
+  }).join('')}</div>`;
+}
+
+// ── CELL TOGGLE (tap a cell to lock/unlock) ──
+function toggleRingCell(key,label,color,dayIdx,nav){
+  const isDone=S.weekRings[dayIdx][key];
+  if(isDone){
+    S.weekRings[dayIdx][key]=false;
+  } else {
+    S.weekRings[dayIdx][key]=true;
+  }
+  saveState();
+  renderWeekTracker();
+  renderTrackerView(_trackerView);
+}
+
+// Keep openRingHistory for modal - now called from cell long-press (secondary)
+function openRingHistory(key,label,color,dayIdx){
+  const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const dayName=days[dayIdx];
+  const isDone=S.weekRings[dayIdx][key];
+  const isToday=dayIdx===new Date().getDay();
+  const navMap={plan1:'journey',plan2:'journey',plan3:'journey',study:'study',zikaron:'zikaron'};
+  const nav=navMap[key]||'today';
+
+  document.getElementById('rhTitle').innerHTML=
+    '<span style="color:'+color+';text-shadow:0 0 10px '+color+'55">⬤</span> '+label+' · '+dayName;
+
+  const el=document.getElementById('rhBody');
+  el.innerHTML='';
+
+  const status=document.createElement('div');
+  status.style.cssText='text-align:center;padding:12px 0;margin-bottom:12px;border-bottom:1px solid var(--border)';
+  status.innerHTML='<div style="font-size:28px;margin-bottom:4px">'+(isDone?'✅':'⬜')+'</div>'
+    +'<div style="font-family:Cinzel,serif;font-size:11px;color:'+(isDone?color:'var(--text-3)')+';letter-spacing:1px">'
+    +(isDone?'Completed':'Not yet completed')+'</div>';
+  el.appendChild(status);
+
+  const btnWrap=document.createElement('div');
+  btnWrap.style.marginBottom='14px';
+  const actionBtn=document.createElement('button');
+  actionBtn.textContent=isDone?'✕ Unmark':'✦ '+(isToday?'Lock In for Today':'Mark '+dayName);
+  actionBtn.style.cssText='width:100%;padding:12px;background:'+( isDone?'rgba(255,255,255,0.03)':'linear-gradient(135deg,'+color+'22,'+color+'11)')+';border:1px solid '+(isDone?'rgba(255,255,255,0.1)':color+'66')+';border-radius:12px;color:'+(isDone?'var(--text-3)':color)+';font-family:Cinzel,serif;font-size:11px;letter-spacing:2px;cursor:pointer;outline:none';
+  actionBtn.onclick=function(){ toggleRingCell(key,label,color,dayIdx,nav); closeMo(); };
+  btnWrap.appendChild(actionBtn);
+  el.appendChild(btnWrap);
+
+  const navDiv=document.createElement('div');
+  navDiv.style.cssText='text-align:center;font-family:Cinzel,serif;font-size:9px;letter-spacing:1px;color:'+color+';cursor:pointer;opacity:.7;margin-top:4px';
+  navDiv.textContent='Go to '+nav+' →';
+  navDiv.onclick=function(){closeMo();goTo(nav);};
+  el.appendChild(navDiv);
+
+  openMo('moRingHist');
+}
+
+function lockRingDay(key,dayIdx){ S.weekRings[dayIdx][key]=true; saveState(); renderWeekTracker(); if(_trackerOpen) renderTrackerView(_trackerView); }
+function unlockRingDay(key,dayIdx){ S.weekRings[dayIdx][key]=false; saveState(); renderWeekTracker(); if(_trackerOpen) renderTrackerView(_trackerView); }
 
 
 function renderPrayer(){
@@ -1280,14 +1589,73 @@ function renderStudyPills(){
   ).join('');
 }
 
-function setStudyPlan(id){S.selPlanId=id;renderStudyPills();}
+function setStudyPlan(id){
+  S.selPlanId=id;
+  const m=S.planMethods[id]||'soap';
+  S.selMethod=m;
+  document.querySelectorAll('.mtab').forEach(t=>t.classList.remove('active'));
+  const btn=document.querySelector('.mtab-'+m);
+  if(btn) btn.classList.add('active');
+  document.querySelectorAll('.method-box').forEach(b=>b.classList.remove('active'));
+  const box=document.getElementById('mb-'+m);
+  if(box) box.classList.add('active');
+  renderStudyPills();
+  loadStudyNotes(m);
+}
 
 function selMethod(m,btn){
   S.selMethod=m;
+  S.planMethods[S.selPlanId]=m;
   document.querySelectorAll('.mtab').forEach(t=>t.classList.remove('active'));
   btn.classList.add('active');
   document.querySelectorAll('.method-box').forEach(b=>b.classList.remove('active'));
   document.getElementById('mb-'+m).classList.add('active');
+  loadStudyNotes(m);
+  saveState();
+}
+
+// Study notes field map per method
+const STUDY_FIELDS={
+  soap:['ta-soap-s','svRef','ta-soap-o','ta-soap-a','ta-soap-p'],
+  star:['ta-star-s','ta-star-t','ta-star-a','ta-star-r'],
+  oia: ['ta-oia-o','ta-oia-i','ta-oia-a'],
+  reap:['ta-reap-r','ta-reap-e','ta-reap-a','ta-reap-p'],
+  '5r': ['ta-5r-r1','ta-5r-r2','ta-5r-r3','ta-5r-r4','ta-5r-r5'],
+};
+
+function saveStudyNotes(method){
+  const key=S.selPlanId+'_'+method;
+  const data={savedAt:new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})};
+  (STUDY_FIELDS[method]||[]).forEach(id=>{
+    const el=document.getElementById(id);
+    if(el) data[id]=el.value;
+  });
+  if(!S.studyData) S.studyData={};
+  S.studyData[key]=data;
+  saveState();
+  // Flash saved message
+  const msg=document.getElementById('saved-'+method);
+  if(msg){msg.style.display='block';setTimeout(()=>msg.style.display='none',2000);}
+  // Also mark study ring for today
+  S.weekRings[new Date().getDay()].study=true;
+  renderWeekTracker();
+}
+
+function loadStudyNotes(method){
+  if(!S.studyData) return;
+  const key=S.selPlanId+'_'+method;
+  const data=S.studyData[key];
+  if(!data) return;
+  (STUDY_FIELDS[method]||[]).forEach(id=>{
+    const el=document.getElementById(id);
+    if(el&&data[id]!==undefined) el.value=data[id];
+  });
+  if(method==='soap') updateSV();
+}
+
+function loadAllStudyNotes(){
+  const m=S.selMethod||'soap';
+  loadStudyNotes(m);
 }
 
 function stepTab(btn,method,step){
@@ -1406,6 +1774,95 @@ function saveZkMo(){
   setTimeout(()=>document.getElementById('zkMoDisp').scrollIntoView({behavior:'smooth',block:'start'}),80);
 }
 
+function saveDailyTrio(){
+  const word=document.getElementById('wordTa').value.trim();
+  const wordRef=document.getElementById('wordRef').value.trim();
+  const song=document.getElementById('songTa').value.trim();
+  const songRef=document.getElementById('songRef').value.trim();
+  const sermon=document.getElementById('sermonTa').value.trim();
+  const sermonRef=document.getElementById('sermonRef').value.trim();
+  if(!word&&!song&&!sermon)return;
+  const today=new Date().toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric',year:'numeric'});
+  const existing=S.dailyEntries.findIndex(e=>e.date===today);
+  const entry={date:today,word,wordRef,song,songRef,sermon,sermonRef};
+  if(existing>=0) S.dailyEntries[existing]=entry;
+  else S.dailyEntries.unshift(entry);
+  S.weekRings[new Date().getDay()].zikaron=true;
+  saveState();renderWeekRings();renderDailyTrio();renderHomeDailyCard();
+  // Also sync back to home card fields
+  const f=(id,val)=>{const el=document.getElementById(id);if(el)el.value=val||'';};
+  f('hd-wordTa',word);f('hd-wordRef',wordRef);
+  f('hd-songTa',song);f('hd-songRef',songRef);
+  f('hd-sermonTa',sermon);f('hd-sermonRef',sermonRef);
+  document.getElementById('dailyTrioSaved').style.display='block';
+  setTimeout(()=>{const el=document.getElementById('dailyTrioSaved');if(el)el.style.display='none';},2500);
+}
+
+function renderDailyTrio(){
+  const today=new Date().toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric',year:'numeric'});
+  const todayEntry=S.dailyEntries.find(e=>e.date===today);
+  if(todayEntry){
+    document.getElementById('wordTa').value=todayEntry.word||'';
+    document.getElementById('wordRef').value=todayEntry.wordRef||'';
+    document.getElementById('songTa').value=todayEntry.song||'';
+    document.getElementById('songRef').value=todayEntry.songRef||'';
+    document.getElementById('sermonTa').value=todayEntry.sermon||'';
+    document.getElementById('sermonRef').value=todayEntry.sermonRef||'';
+  }
+  // render history (past entries, skip today)
+  const past=S.dailyEntries.filter(e=>e.date!==today);
+  const histSec=document.getElementById('dailyHistSection');
+  const histList=document.getElementById('dailyHistList');
+  if(!histSec||!histList)return;
+  if(!past.length){histSec.style.display='none';return;}
+  histSec.style.display='block';
+  histList.innerHTML=past.map(e=>`
+    <div style="background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:10px;padding:10px 12px;margin-bottom:8px;">
+      <div style="font-family:'Cinzel',serif;font-size:8px;color:rgba(253,230,138,0.45);letter-spacing:1px;margin-bottom:6px;">${e.date}</div>
+      ${e.word?`<div style="font-size:11px;color:var(--c-word);margin-bottom:3px;">✝️ <em>${e.word}</em>${e.wordRef?' <span style="opacity:.5;font-size:10px">— '+e.wordRef+'</span>':''}</div>`:''}
+      ${e.song?`<div style="font-size:11px;color:var(--c-song);margin-bottom:3px;">🎵 <em>${e.song}</em>${e.songRef?' <span style="opacity:.5;font-size:10px">— '+e.songRef+'</span>':''}</div>`:''}
+      ${e.sermon?`<div style="font-size:11px;color:var(--c-sermon);">🎙️ <em>${e.sermon}</em>${e.sermonRef?' <span style="opacity:.5;font-size:10px">— '+e.sermonRef+'</span>':''}</div>`:''}
+    </div>`).join('');
+}
+
+function renderHomeDailyCard(){
+  // Populate home daily input fields from today's saved entry
+  const today=new Date().toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric',year:'numeric'});
+  const entry=S.dailyEntries&&S.dailyEntries.find(e=>e.date===today);
+  if(!entry) return;
+  const f=(id,val)=>{const el=document.getElementById(id);if(el&&val)el.value=val;};
+  f('hd-wordTa',   entry.word);
+  f('hd-wordRef',  entry.wordRef);
+  f('hd-songTa',   entry.song);
+  f('hd-songRef',  entry.songRef);
+  f('hd-sermonTa', entry.sermon);
+  f('hd-sermonRef',entry.sermonRef);
+}
+
+// Sync home inputs to Zikaron daily tab inputs (keep both in sync live)
+function syncHomeDaily(){
+  const map=[
+    ['hd-wordTa','wordTa'],['hd-wordRef','wordRef'],
+    ['hd-songTa','songTa'],['hd-songRef','songRef'],
+    ['hd-sermonTa','sermonTa'],['hd-sermonRef','sermonRef'],
+  ];
+  map.forEach(([src,dst])=>{
+    const s=document.getElementById(src),d=document.getElementById(dst);
+    if(s&&d) d.value=s.value;
+  });
+}
+
+function saveHomeDailyTrio(){
+  // Mirror home inputs to Zikaron fields then call saveDailyTrio
+  syncHomeDaily();
+  saveDailyTrio();
+  // Show confirmation on home card
+  const msg=document.getElementById('hd-saved');
+  if(msg){msg.style.display='block';setTimeout(()=>msg.style.display='none',2500);}
+}
+
+
+
 function renderZkYrHist(){
   const h=document.getElementById('zkYrHist'),l=document.getElementById('zkYrHistList');
   if(!S.zkYrHistory.length){h.style.display='none';return;}
@@ -1497,7 +1954,7 @@ function markComplete(){
   openMo('moCel');
   const btn=document.getElementById('completeBtn');
   btn.textContent='✓ Completed Today — Faithful!';btn.style.opacity='.5';btn.disabled=true;
-  renderAll();
+  renderAll();saveState();
 }
 
 // ═══════════════════════════════════════
@@ -1509,14 +1966,15 @@ function toggleDay(pid,idx){
   else{p.doneDays.push(idx);p.doneDays.sort((a,b)=>a-b);}
   p.completed=p.doneDays.length>=p.days;
   S.bestStreak=Math.max(S.bestStreak,streakN());
-  // Mark today's ring for whichever plan was ticked
+  // Mark the ring for today — map plan by position in active plans (up to 5 rings)
   const dow=new Date().getDay();
-  const key={1:'plan1',2:'plan2',3:'plan3'}[pid];
-  if(key){
-    // ring is active if plan has ANY done days (including today's tick)
-    S.weekRings[dow][key]=p.doneDays.length>0;
+  const activePlans=S.plans.filter(q=>q.active&&!q.completed);
+  const ringKeys=['plan1','plan2','plan3','plan4','plan5'];
+  const planIdx=activePlans.findIndex(q=>q.id===pid);
+  if(planIdx>=0&&planIdx<ringKeys.length){
+    S.weekRings[dow][ringKeys[planIdx]]=p.doneDays.length>0;
   }
-  renderPathCards();renderDashGrid();renderActivePlans();renderStudyPills();renderMyPlans();syncHdr();renderWeekRings();
+  renderPathCards();renderActivePlans();renderStudyPills();renderMyPlans();syncHdr();renderWeekRings();
 }
 
 function renderPathCards(){
@@ -1581,11 +2039,25 @@ function renderMyPlans(){
 
 function activatePreset(name,days,color,desc){
   if(S.plans.some(p=>p.name===name&&p.active))return;
-  S.plans.push({id:Date.now(),name,days,color,desc,active:true,completed:false,doneDays:[]});
-  renderAll();
+  const newId=Date.now();
+  S.plans.push({id:newId,name,days,color,desc,active:true,completed:false,doneDays:[]});
+  S.planMethods[newId]='soap';
+  S.selPlanId=newId;
+  renderAll();saveState();
 }
 function completePlan(id){const p=S.plans.find(x=>x.id===id);if(p){p.completed=true;p.doneDays=Array.from({length:p.days},(_,i)=>i);}renderAll();}
-function deletePlan(id){if(!confirm('Remove this plan?'))return;S.plans=S.plans.filter(p=>p.id!==id);if(S.selPlanId===id&&S.plans.length)S.selPlanId=S.plans[0].id;renderAll();}
+function deletePlan(id){
+  const p=S.plans.find(x=>x.id===id);
+  if(!p)return;
+  document.getElementById('confirmDelName').textContent='"'+p.name+'"';
+  document.getElementById('confirmDelBtn').onclick=function(){
+    S.plans=S.plans.filter(x=>x.id!==id);
+    delete S.planMethods[id];
+    if(S.selPlanId===id&&S.plans.length) S.selPlanId=S.plans[0].id;
+    closeMo();renderAll();saveState();
+  };
+  openMo('moConfirmDel');
+}
 
 function renderColorRow(){
   document.getElementById('colorRow').innerHTML=COLORS.map(c=>
@@ -1599,9 +2071,15 @@ function saveNewPlan(){
   const desc=document.getElementById('npDesc').value.trim()||'Custom study plan';
   const done=parseInt(document.getElementById('npDone').value)||0;
   if(!name){document.getElementById('npName').focus();return;}
-  S.plans.push({id:Date.now(),name,days,color:S.selColor,desc,active:true,completed:false,doneDays:Array.from({length:Math.min(done,days)},(_,i)=>i)});
+  const newId=Date.now();
+  S.plans.push({id:newId,name,days,color:S.selColor,desc,active:true,completed:false,
+    doneDays:Array.from({length:Math.min(done,days)},(_,i)=>i)});
+  S.planMethods[newId]='soap'; // default method for new plan
+  S.selPlanId=newId; // select the new plan
   ['npName','npDays','npDesc','npDone'].forEach(id=>document.getElementById(id).value='');
-  closeMo();renderAll();
+  closeMo();
+  renderAll();
+  saveState();
 }
 
 // ═══════════════════════════════════════
@@ -1626,7 +2104,9 @@ function saveState(){
       prayerDone:S.prayerDone, subjects:S.subjects, amarEntries:S.amarEntries,
       zkYr:S.zkYr, zkYrHistory:S.zkYrHistory,
       zkMo:S.zkMo, zkMoHistory:S.zkMoHistory,
-      plans:S.plans,
+      plans:S.plans, planMethods:S.planMethods,
+      dailyEntries:S.dailyEntries,
+      studyData:S.studyData,
       _savedDate:new Date().toDateString()
     };
     localStorage.setItem(STORE_KEY,JSON.stringify(save));
@@ -1646,77 +2126,41 @@ function loadState(){
     // If saved date is >6 days ago, clear weekHistory and weekRings
     if(daysSince>6){
       saved.weekHistory=[false,false,false,false,false,false,false];
-      saved.weekRings=[0,1,2,3,4,5,6].map(()=>({plan1:false,plan2:false,plan3:false,study:false,zikaron:false}));
+      saved.weekRings=[0,1,2,3,4,5,6].map(()=>({plan1:false,plan2:false,plan3:false,plan4:false,plan5:false,study:false,zikaron:false}));
       saved.todayDone=false;
     }
-    // Reset todayDone if it's a new day
+    // Reset todayDone and prayerDone if it's a new day
     if(saved._savedDate && saved._savedDate!==today){
       saved.todayDone=false;
+      saved.prayerDone={};
     }
 
     // Merge into S (keep defaults for any missing keys)
     Object.assign(S,saved);
+    ensurePlanMethods();
 
     // Ensure weekRings has correct shape
     if(!Array.isArray(S.weekRings)||S.weekRings.length!==7){
-      S.weekRings=[0,1,2,3,4,5,6].map(()=>({plan1:false,plan2:false,plan3:false,study:false,zikaron:false}));
+      S.weekRings=[0,1,2,3,4,5,6].map(()=>({plan1:false,plan2:false,plan3:false,plan4:false,plan5:false,study:false,zikaron:false}));
     }
   }catch(e){console.warn('Load failed',e);}
 }
 
-// Patch every state-mutating function to auto-save
-const _origMarkComplete=markComplete;
-markComplete=function(){_origMarkComplete();saveState();};
+// ═══════════════════════════════════════
+//  AUTO-SAVE PATCHES (functions that don't already call saveState)
+// ═══════════════════════════════════════
 const _origToggleDay=toggleDay;
 toggleDay=function(pid,idx){_origToggleDay(pid,idx);saveState();};
 const _origSaveAmar=saveAmar;
 saveAmar=function(){_origSaveAmar();saveState();};
-const _origSaveZkYr=saveZkYr;
-saveZkYr=function(){_origSaveZkYr();saveState();};
-const _origSaveZkMo=saveZkMo;
-saveZkMo=function(){_origSaveZkMo();saveState();};
-const _origSaveNewPlan=saveNewPlan;
-saveNewPlan=function(){_origSaveNewPlan();saveState();};
 const _origConfirmPrayer=confirmPrayer;
 confirmPrayer=function(){_origConfirmPrayer();saveState();};
 
 // ═══════════════════════════════════════
 //  SERVICE WORKER — Offline caching
 // ═══════════════════════════════════════
-if('serviceWorker' in navigator){
-  const swCode=`
-const CACHE='darash-v1';
-const FONTS=[
-  'https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600;700&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Noto+Serif+Hebrew:wght@400;700&display=swap'
-];
-self.addEventListener('install',e=>{
-  e.waitUntil(caches.open(CACHE).then(c=>c.addAll(FONTS).catch(()=>{})));
-  self.skipWaiting();
-});
-self.addEventListener('activate',e=>{
-  e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))));
-  self.clients.claim();
-});
-self.addEventListener('fetch',e=>{
-  e.respondWith(
-    caches.match(e.request).then(cached=>{
-      if(cached)return cached;
-      return fetch(e.request).then(res=>{
-        if(res&&res.status===200&&res.type!=='opaque'){
-          const clone=res.clone();
-          caches.open(CACHE).then(c=>c.put(e.request,clone));
-        }
-        return res;
-      }).catch(()=>cached||new Response('',{status:503}));
-    })
-  );
-});`;
-  const swBlob=new Blob([swCode],{type:'application/javascript'});
-  const swUrl=URL.createObjectURL(swBlob);
-  navigator.serviceWorker.register(swUrl,{scope:'./'})
-    .then(()=>console.log('Darash SW registered'))
-    .catch(e=>console.log('SW skipped:',e));
-}
+// Service worker not used — single-file app uses localStorage for full persistence.
+// All study data, plans, rings, prayer, zikaron saved automatically after every action.
 
 // ═══════════════════════════════════════
 //  INSTALL PROMPT — Android
@@ -1773,8 +2217,6 @@ function dismissBanner(){
 // ═══════════════════════════════════════
 loadState();
 init();
-// Re-render rings after first paint so SVG container has real dimensions
-requestAnimationFrame(()=>requestAnimationFrame(renderWeekRings));
 checkiOSInstall();
 </script>
 </body>
